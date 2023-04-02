@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PostesController{% endblock %}
+
+
+{% block body %}
+<h1>liste des postes</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">trajet</th>
+      <th scope="col">vehicule</th>
+      <th scope="col">depart</th>
+      <th scope="col">arrive</th>
+      <th scope="col">prix</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in postes%}
+    <tr>
+      <td>{{i.getTrajet}}</td>
+      <td>{{i.getVehicule}}</td>
+      <td>{{i.getDepart}}</td>
+      <td>{{i.getArrive}}</td>
+      <td>{{i.getPrix}}</td>
+      <td>
+      <div class="d-flex justify-content-between align-items-center">
+      <div class="btn-group">
+        <button type="button" class="btn btn-sm btn-outline-secondary">Afficher</button>
+        <a href="{{path('app_edit_poste', {'id': i.id})}}" class="btn btn-sm btn-outline-secondary">Modifer</a>
+        <a href="{{path('app_delete_poste', {'id': i.id})}}" class="btn btn-sm btn-outline-secondary" onclick="return confirm('Attention ce ci va supprimer le poste')">Supprimer</a>
+      </div>
+      </div>
+      
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+header {
+	background-image: url("assets/img/header-bg.jpg");
+	background-position: center;
+	background-size: cover;
+	height: 60vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	color: white;
+}
+
+.masthead-heading {
+	font-weight: bold;
+	font-size: 3rem;
+}

@@ -1,0 +1,69 @@
+{#
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mon site</title>
+    {% block stylesheets %}
+      <link rel="stylesheet" href="{{asset('assets/css/header.css')}}">
+    {% endblock %}
+</head>
+<body>
+	<header>
+		<div class="logo">
+			<h1>Coride</h1>
+		</div>
+		<nav>
+			<ul>
+				<li class="menu-item"><a href="#">Poste</a>
+					<ul class="sub-menu">
+						<li><a href="{{path('app_add_poste')}}">Ajouter</a></li>
+						<li><a href="{{path('app_postes')}}">Afficher</a></li>
+					</ul>
+				</li>
+				<li class="menu-item"><a href="#">Véhicule</a>
+					<ul class="sub-menu">
+						<li><a href="#">Ajouter</a></li>
+						<li><a href="#">Afficher</a></li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<!-- Contenu de la page -->
+	</main>
+</body>
+</html>
+#}
+
+
+  <header id="header" class="header d-flex align-items-center">
+
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+      <a href="{{path('app_home')}}" class="logo d-flex align-items-center">
+        <h1>Co<span>Ride</span></h1>
+      </a>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="{{path('app_home')}}">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li class="dropdown"><a href="{{path('app_home')}}"><span>Poste</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="{{path('app_add_poste')}}">AJOUTER</a></li>
+              <li><a href="{{path('app_postes')}}">HISTORIQUE</a></li>
+            </ul>
+          </li>
+          <li><a href="#recent-posts">SignIn</a></li>
+        </ul>
+      </nav><!-- .navbar -->
+
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+    </div>
+  </header><!-- End Header -->
+  <!-- End Header -->
+
+
+
+    
