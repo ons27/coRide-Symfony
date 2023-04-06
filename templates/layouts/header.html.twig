@@ -53,7 +53,14 @@
               <li><a href="{{path('app_postes')}}">HISTORIQUE</a></li>
             </ul>
           </li>
-          <li><a href="#recent-posts">SignIn</a></li>
+          <li class="dropdown"><a href="{{path('app_home')}}"><span>Trajet</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="{{path('app_add_trajet')}}">AJOUTER</a></li>
+              <li><a href="{{path('app_trajet')}}">HISTORIQUE</a></li>
+
+            </ul>
+          </li>
+          <li><a href="#recent-trajet">SignIn</a></li>
         </ul>
       </nav><!-- .navbar -->
 
