@@ -17,7 +17,7 @@ class EditTrajetController extends AbstractController
     {
         $form=$this->createForm(TrajetType::class, $trajet);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
+        if($form->isSubmitted()){
             $em = $this->getDoctrine()->getManager();
             $em->flush();
             return $this->redirectToRoute('app_trajet'); //specific the name of the route

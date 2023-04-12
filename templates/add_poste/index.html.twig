@@ -4,15 +4,14 @@
 
 {% block body %}
     <h1>Publier Poste</h1>
-
-    
+<form action="{{ path('handle-form') }}" method="post">
 
     {{form_start(form)}}
 
     {{include('layouts/_posteForm.html.twig')}}
-    
+
     <button class="btn btn-outline-primary">Ajouter poste</button>
 
     {{form_end(form)}}
-   
+</form>   
 {% endblock %}

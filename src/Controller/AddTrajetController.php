@@ -18,7 +18,7 @@ class AddTrajetController extends AbstractController
         
         $form->handleRequest($request);
         
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($trajet);
             $em->flush();

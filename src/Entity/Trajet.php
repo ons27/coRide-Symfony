@@ -4,9 +4,6 @@ namespace App\Entity;
 
 use App\Repository\TrajetRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Mime\Message;
-use Symfony\Component\Validator\Constraints as Assert;
-    
 
 #[ORM\Entity(repositoryClass: TrajetRepository::class)]
 class Trajet
@@ -17,13 +14,9 @@ class Trajet
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\Length(min:5)]
-    #[Assert\NotBlank]
-    private ?string $depart = null;    
+    private ?string $depart = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\Length(min:5)]
-    #[Assert\NotBlank(message:"Email is required")]
     private ?string $destination = null;
 
     #[ORM\Column(length: 255)]

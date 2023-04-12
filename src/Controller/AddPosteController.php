@@ -9,7 +9,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Form\FormError;
 
 
 class AddPosteController extends AbstractController
@@ -25,9 +24,6 @@ class AddPosteController extends AbstractController
             $em->persist($poste);
             $em->flush();
             return $this->redirectToRoute('app_postes'); //specific the name of the route
-        }
-        if ($form->isSubmitted() && $form->get('user')->isValid() === false) {
-            $form->get('user')->addError(new FormError('The username must be at least 5 characters long.'));
         }
         return $this->render('add_poste/index.html.twig', [
             'controller_name' => 'AddPosteController',

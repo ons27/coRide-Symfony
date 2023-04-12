@@ -13,6 +13,7 @@
       <th scope="col">depart</th>
       <th scope="col">arrive</th>
       <th scope="col">prix</th>
+      <th scope="col">type</th>
     </tr>
   </thead>
   <tbody>
@@ -20,9 +21,10 @@
     <tr>
       <td>{{i.getTrajet}}</td>
       <td>{{i.getVehicule}}</td>
-      <td>{{i.getDepart}}</td>
-      <td>{{i.getArrive}}</td>
+      <td>{{ i.dateDepart|date('Y-m-d H:i:s') }}</td>
+      <td>{{i.getDateArrive|date('Y-m-d H:i:s') }}</td>
       <td>{{i.getPrix}}</td>
+      <td>{{i.getTypepost}}</td>
       <td>
       <div class="d-flex justify-content-between align-items-center">
       <div class="btn-group">

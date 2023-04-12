@@ -3,7 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\PosteRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: PosteRepository::class)]
@@ -15,7 +17,13 @@ class Poste
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
-    #[Assert\Length(min:5)]
+    #[Assert\NotBlank(message:"user name is required")]
+    #[Assert\Length(
+        min: 2,
+        max: 50,
+        minMessage: "user name must be at least {{ limit }} characters long",
+        maxMessage: "user name cannot be longer than {{ limit }} characters"
+    )]
     private ?string $user = null;
 
     #[ORM\Column(length: 255)]
@@ -25,17 +33,21 @@ class Poste
     private ?string $vehicule = null;
 
     #[ORM\Column]
-    #[Assert\Positive]
+    #[Assert\NotBlank(message: "Price is required")]
+    #[Assert\GreaterThan(
+        value: 0,
+        message: "price must be greater than {{ compared_value }}"
+    )]
     private ?float $prix = null;
 
-    #[ORM\Column(length: 20, nullable: true)]
-    #[Assert\Length(min:5)]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $dateDepart = null;
 
-    private ?string $depart = null;
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $dateArrive = null;
 
-    #[ORM\Column(length: 20, nullable: true)]
-    #[Assert\Length(min:5)]
-    private ?string $arrive = null;
+    #[ORM\ManyToOne(inversedBy: 'postes')]
+    private ?TypePublication $typepost = null;
 
     public function getId(): ?int
     {
@@ -90,26 +102,38 @@ class Poste
         return $this;
     }
 
-    public function getDepart(): ?string
+    public function getDateDepart(): ?\DateTimeInterface
     {
-        return $this->depart;
+        return $this->dateDepart;
     }
 
-    public function setDepart(?string $depart): self
+    public function setDateDepart(\DateTimeInterface $dateDepart): self
     {
-        $this->depart = $depart;
+        $this->dateDepart = $dateDepart;
 
         return $this;
     }
 
-    public function getArrive(): ?string
+    public function getDateArrive(): ?\DateTimeInterface
     {
-        return $this->arrive;
+        return $this->dateArrive;
     }
 
-    public function setArrive(?string $arrive): self
+    public function setDateArrive(\DateTimeInterface $dateArrive): self
     {
-        $this->arrive = $arrive;
+        $this->dateArrive = $dateArrive;
+
+        return $this;
+    }
+
+    public function getTypepost(): ?TypePublication
+    {
+        return $this->typepost;
+    }
+
+    public function setTypepost(?TypePublication $typepost): self
+    {
+        $this->typepost = $typepost;
 
         return $this;
     }

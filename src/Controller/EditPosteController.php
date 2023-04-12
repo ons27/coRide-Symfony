@@ -16,7 +16,7 @@ class EditPosteController extends AbstractController
     {
         $form=$this->createForm(PosteType::class, $poste);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
+        if($form->isSubmitted()){
             $em = $this->getDoctrine()->getManager();
             $em->flush();
             return $this->redirectToRoute('app_postes'); //specific the name of the route
