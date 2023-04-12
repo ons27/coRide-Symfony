@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\PosteRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: PosteRepository::class)]
 class Poste
@@ -14,6 +15,7 @@ class Poste
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\Length(min:5)]
     private ?string $user = null;
 
     #[ORM\Column(length: 255)]
@@ -23,12 +25,16 @@ class Poste
     private ?string $vehicule = null;
 
     #[ORM\Column]
+    #[Assert\Positive]
     private ?float $prix = null;
 
     #[ORM\Column(length: 20, nullable: true)]
+    #[Assert\Length(min:5)]
+
     private ?string $depart = null;
 
     #[ORM\Column(length: 20, nullable: true)]
+    #[Assert\Length(min:5)]
     private ?string $arrive = null;
 
     public function getId(): ?int

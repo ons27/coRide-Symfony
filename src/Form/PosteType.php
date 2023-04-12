@@ -16,9 +16,10 @@ class PosteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('user', TextType::class,[
-                'attr' => [ 'class' => 'form-control'],
-            ])
+        ->add('user', TextType::class, [
+            'label' => 'User',
+            'required' => true,
+        ])
             ->add('trajet', ChoiceType::class, [
                 'choices' => [
                     'traj1' => 'traj1',
