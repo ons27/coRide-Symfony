@@ -45,6 +45,8 @@ class TypeTrajet
     {
         return $this->typet;
     }
+   
+
 
 
     /**
@@ -53,6 +55,12 @@ class TypeTrajet
     public function getType(): Collection
     {
         return $this->type;
+    }
+    public function setType(string $Type): self
+    {
+        $this->typet = $Type;
+
+        return $this;
     }
 
     public function addType(Trajet $type): self
@@ -77,10 +85,5 @@ class TypeTrajet
         return $this;
     }
 
-    public function setType(string $Type): self
-    {
-        $this->typet = $Type;
-
-        return $this;
-    }
+  
 }
