@@ -1,0 +1,26 @@
+{% extends 'admin_base.html.twig' %}
+
+{% block title %}TypeTrajet{% endblock %}
+
+{% block body %}
+    <h1>TypeTrajet</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ type_trajet.id }}</td>
+            </tr>
+            <tr>
+                <th>Typet</th>
+                <td>{{ type_trajet.typet }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_type_trajet_index') }}">back to list</a>
+
+    <a href="{{ path('app_type_trajet_edit', {'id': type_trajet.id}) }}">edit</a>
+
+    {{ include('type_trajet/_delete_form.html.twig') }}
+{% endblock %}
