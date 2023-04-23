@@ -13,6 +13,18 @@
       <button type="submit" class="btn btn-primary">Rechercher</button>
     </div>
   </form>
+{# Type filter form #}
+<form method="get" action="{{ path('app_postes') }}" class="mb-4">
+  <div class="input-group">
+    <select name="type" class="form-control">
+      <option value="">Filtrer par type</option>
+      {% for type in types %}
+        <option value="{{ type }}">{{ type }}</option>
+      {% endfor %}
+    </select>
+    <button type="submit" class="btn btn-primary">Filtrer</button>
+  </div>
+</form>
 
 <h1>liste des postes</h1>
 <table class="table">
