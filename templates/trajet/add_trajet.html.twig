@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add Trajet{% endblock %}
+
+{% block body %}
+    <h1>Publier Trajet</h1>
+
+    {{form_start(form)}}
+
+    {{include('layouts/_trajetForm.html.twig')}}
+
+    <button class="btn btn-outline-primary">Ajouter Trajet</button>
+
+    {{form_end(form)}}
+   
+{% endblock %}
