@@ -1,0 +1,17 @@
+{% extends 'admin_base.html.twig' %}
+
+{% block title %}Hello admin!{% endblock %}
+
+
+{% block body %}
+<h1>Hello Admin ,</h1><h3> here is the dashboard..</h3>
+<br/><br/>
+<div>
+  <h3>Date du jour Tunisie :</h3>
+  <h5>{{ jour }}</h5>
+  <br/><br/>
+  <h3>Météo du jour :</h3>
+  <h5>Il fait {{ temperature }}°C avec {{ description }}</h5>
+</div>
+
+{% endblock %}

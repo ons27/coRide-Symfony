@@ -38,6 +38,15 @@ class PosteRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+    public function countByType(string $type): int
+    {
+        return $this->createQueryBuilder('p')
+            ->select('COUNT(p.id)')
+            ->andWhere('p.typepost = :type')
+            ->setParameter('type', $type)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 
 //    /**
 //     * @return Poste[] Returns an array of Poste objects

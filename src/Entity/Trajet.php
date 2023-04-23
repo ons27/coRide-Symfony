@@ -4,11 +4,6 @@ namespace App\Entity;
 
 use App\Repository\TrajetRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Mime\Message;
-use Symfony\Component\Validator\Constraints as Assert;
-use Doctrine\DBAL\Types\Types;
-
-    
 
 #[ORM\Entity(repositoryClass: TrajetRepository::class)]
 class Trajet
@@ -19,18 +14,13 @@ class Trajet
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\Length(min:5)]
-    #[Assert\NotBlank]
-    private ?string $depart = null;    
+    private ?string $depart = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\Length(min:5)]
-    #[Assert\NotBlank(message:"Email is required")]
     private ?string $destination = null;
 
-
-    #[ORM\ManyToOne(inversedBy: 'type')]
-    private ?TypeTrajet $typeTrajet = null;
+    #[ORM\Column(length: 255)]
+    private ?string $type = null;
 
     public function getId(): ?int
     {
@@ -61,16 +51,14 @@ class Trajet
         return $this;
     }
 
-   
-
-    public function getTypeTrajet(): ?TypeTrajet
+    public function getType(): ?string
     {
-        return $this->typeTrajet;
+        return $this->type;
     }
 
-    public function setTypeTrajet(?TypeTrajet $typeTrajet): self
+    public function setType(string $type): self
     {
-        $this->typeTrajet = $typeTrajet;
+        $this->type = $type;
 
         return $this;
     }

@@ -1,0 +1,24 @@
+{% extends 'admin_base.html.twig' %}
+
+{% block title %}Hello TypePostEditController!{% endblock %}
+
+{% block body %}
+<br/><br/><br/><br/>
+<h2>Modifier type poste</h2>
+<br/>
+{{form_start(form2)}}
+<div class="form-group">
+        {{form_label(form2.type)}}
+        {{form_widget(form2.type)}}
+        {{form_errors(form2.type)}}
+</div>
+<div class="d-flex justify-content-between align-items-center">
+      <div class="btn-group">
+        <button class="btn btn-sm btn-outline-secondary">Modifier type</button>
+        <a href="{{path('admin_type_post')}}" class="btn btn-sm btn-outline-secondary" onclick="return confirm('Moddification annuler !')">Annuler</a>
+      </div>
+</div>
+{{form_end(form2)}}
+<br/><br/><br/><br/>
+
+{% endblock %}
