@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add Poste{% endblock %}
+
+{% block body %}
+    <h1>Publier Poste</h1>
+
+    {{form_start(form)}}
+    {{include('layouts/_posteForm.html.twig')}}
+    <button class="btn btn-outline-primary">Ajouter poste</button>
+    {{form_end(form)}}
+
+<div>
+  <h3> Holidays:</h3>
+    <ul>
+      {% for holiday in holidays %}
+        <li>{{ holiday.date | date('m/d/Y') }}: {{ holiday.name }}</li>
+      {% endfor %}
+    </ul>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EditTrajetController{% endblock %}
+
+{% block body %}
+
+    <h1>Editer Trajet</h1>
+
+    {{form_start(form)}}
+
+    {{include('layouts/_trajetForm.html.twig')}}
+
+    <button class="btn btn-outline-primary">Editer trajet</button>
+
+    {{form_end(form)}}
+ 
+{% endblock %}
