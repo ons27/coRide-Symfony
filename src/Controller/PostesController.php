@@ -9,10 +9,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+use Symfony\Component\HttpFoundation\Request;
+
 class PostesController extends AbstractController
 {
     #[Route('/postes', name: 'app_postes')]
-    public function index(PosteRepository $PosteRepository): Response
+    public function index(PosteRepository $PosteRepository,Request $request): Response
     {
        /* $em = $this->getDoctrine()->getManager();
         $poste1 = new Poste();
@@ -25,12 +27,20 @@ class PostesController extends AbstractController
         $em->persist($poste1);
         $em->flush();
        */
-        return $this->render('postes/index.html.twig', [
-            'controller_name' => 'PostesController',
-            'postes' => $PosteRepository->findAll(),
-            'title' => 'Historique',
-            'subtitle' => 'postes',
-        ]);
+      $searchTerm = $request->query->get('q');
+      if ($searchTerm) {
+          $postes = $PosteRepository->findBySearchTerm($searchTerm);
+      } else {
+          $postes = $PosteRepository->findBy([], ['trajet' => 'ASC']);
+      }
+  
+      return $this->render('postes/index.html.twig', [
+          'controller_name' => 'PostesController',
+          'postes' => $postes,
+          'title' => 'Historique',
+          'subtitle' => 'postes',
+          'searchTerm' => $searchTerm,
+      ]);
     }
     
     #[Route('/postes/sort', name: 'app_postes_sort')]
@@ -43,6 +53,8 @@ class PostesController extends AbstractController
             'subtitle' => 'postes triés par Type',
         ]);
     }
+
+
     
     
 }

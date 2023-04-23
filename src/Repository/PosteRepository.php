@@ -48,6 +48,17 @@ class PosteRepository extends ServiceEntityRepository
             ->getSingleScalarResult();
     }
 
+    public function findBySearchTerm($searchTerm)
+    {
+        return $this->createQueryBuilder('t')
+            ->andWhere('t.trajet LIKE :searchTerm OR t.prix LIKE :searchTerm')
+            ->setParameter('searchTerm', '%'.$searchTerm.'%')
+            ->orderBy('t.trajet', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
+
 //    /**
 //     * @return Poste[] Returns an array of Poste objects
 //     */

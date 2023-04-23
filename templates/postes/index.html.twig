@@ -6,6 +6,14 @@
 {% block body %}
 <br/><br/><br/><br/><br/>
 
+{# Search form #}
+  <form method="get" action="{{ path('app_postes') }}" class="mb-4">
+    <div class="input-group">
+      <input type="text" name="q" value="{{ app.request.get('q') }}" class="form-control" placeholder="Rechercher une publication">
+      <button type="submit" class="btn btn-primary">Rechercher</button>
+    </div>
+  </form>
+
 <h1>liste des postes</h1>
 <table class="table">
   <thead>
