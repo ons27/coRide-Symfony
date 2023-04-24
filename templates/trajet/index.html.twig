@@ -3,19 +3,21 @@
 {% block title %}TrajetController{% endblock %}
 
 {% block body %}
+
+   
   <h1>Liste des trajets</h1>
   {# Type filter form #}
-<form method="get" action="{{ path('app_trajet') }}" class="mb-4">
-  <div class="input-group">
-    <select name="typet" class="form-control">
-      <option value="">Filtrer par type</option>
-      {% for type in types %}
-        <option value="{{ type }}">{{ type }}</option>
-      {% endfor %}
-    </select>
-    <button type="submit" class="btn btn-primary">Filtrer</button>
-  </div>
-</form>
+  <form method="get" action="{{ path('app_trajet') }}" class="mb-4">
+    <div class="input-group">
+      <select name="typet" class="form-control">
+        <option value="">Filtrer par type</option>
+        {% for type in types %}
+          <option value="{{ type }}">{{ type }}</option>
+        {% endfor %}
+      </select>
+      <button type="submit" class="btn btn-primary">Filtrer</button>
+    </div>
+  </form>
   {# Search form #}
   <form method="get" action="{{ path('app_trajet') }}" class="mb-4">
     <div class="input-group">
@@ -23,7 +25,7 @@
       <button type="submit" class="btn btn-primary">Rechercher</button>
     </div>
   </form>
-  
+
   {# Search results #}
   {% if trajet is not empty %}
     <table class="table">

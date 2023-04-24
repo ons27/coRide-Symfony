@@ -22,7 +22,16 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
-   
+    app.mailer:
+        class: 'Swift_Mailer'
+        arguments:
+            - '@Swift_SmtpTransport'
+        public: false
 
+    Swift_SmtpTransport:
+        class: 'Swift_SmtpTransport'
+        arguments:
+            - '%env(MAILER_DSN)%'
+    Server: '@smtp.postmarkapp.com'
+    Ports: '@25, @2525, or @587'
     
-   
