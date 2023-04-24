@@ -10,10 +10,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/type/trajet')]
 class TypeTrajetController extends AbstractController
 {
-    #[Route('/', name: 'app_type_trajet_index', methods: ['GET'])]
+    #[Route('/type', name: 'app_type_trajet_index', methods: ['GET'])]
     public function index(TypeTrajetRepository $typeTrajetRepository): Response
     {
         return $this->render('type_trajet/index.html.twig', [
@@ -21,6 +20,7 @@ class TypeTrajetController extends AbstractController
         ]);
     }
 
+  
     #[Route('/new', name: 'app_type_trajet_new', methods: ['GET', 'POST'])]
     public function new(Request $request, TypeTrajetRepository $typeTrajetRepository): Response
     {

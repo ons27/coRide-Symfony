@@ -1,3 +1,7 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+app_pdf_trajet:
+    path: /pdf/trajet
+    controller: App\Controller\TrajetController::pdf
+

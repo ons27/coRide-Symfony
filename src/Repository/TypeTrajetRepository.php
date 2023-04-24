@@ -40,6 +40,7 @@ class TypeTrajetRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+    
 
 //    /**
 //     * @return TypeTrajet[] Returns an array of TypeTrajet objects

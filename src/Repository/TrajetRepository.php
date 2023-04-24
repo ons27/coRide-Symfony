@@ -38,6 +38,16 @@ class TrajetRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+    public function findBySearchTerm($searchTerm)
+    {
+        return $this->createQueryBuilder('t')
+            ->andWhere('t.depart LIKE :searchTerm OR t.destination LIKE :searchTerm ')
+            ->setParameter('searchTerm', '%'.$searchTerm.'%')
+            ->orderBy('t.depart', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+}
 
 //    /**
 //     * @return Trajet[] Returns an array of Trajet objects
@@ -63,4 +73,4 @@ class TrajetRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
-}
+
