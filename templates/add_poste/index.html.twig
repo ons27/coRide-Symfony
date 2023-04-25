@@ -3,12 +3,15 @@
 {% block title %}Add Poste{% endblock %}
 
 {% block body %}
+<br/><br/><br/><br/><br/>
+
     <h1>Publier Poste</h1>
 
     {{form_start(form)}}
     {{include('layouts/_posteForm.html.twig')}}
     <button class="btn btn-outline-primary">Ajouter poste</button>
     {{form_end(form)}}
+
 <br/><br/>
 <div class="holiday-list">
     <h3>jours fériés 2023 :</h3>
@@ -52,6 +55,4 @@
 }
 
 </style>
-
-
 {% endblock %}
