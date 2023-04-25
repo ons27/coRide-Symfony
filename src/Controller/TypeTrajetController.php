@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\TypeTrajet;
 use App\Form\TypeTrajetType;
 use App\Repository\TypeTrajetRepository;
+use App\Repository\TrajetRepository;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,10 +15,21 @@ use Symfony\Component\Routing\Annotation\Route;
 class TypeTrajetController extends AbstractController
 {
     #[Route('/type', name: 'app_type_trajet_index', methods: ['GET'])]
-    public function index(TypeTrajetRepository $typeTrajetRepository): Response
+    public function index(TypeTrajetRepository $typeTrajetRepository, TrajetRepository $TrajetRepository): Response
     {
+
+        $simpleTrajetsCount = $TrajetRepository->countByType(1); //id longTrajet
+        $composeTrajetsCount = $TrajetRepository->countByType(2); //id courtTrajet
+        
+        $data = [
+            'simpleTrajetsCount' => $simpleTrajetsCount,
+            'composeTrajetsCount' => $composeTrajetsCount,
+        ];
+    
         return $this->render('type_trajet/index.html.twig', [
             'type_trajets' => $typeTrajetRepository->findAll(),
+            'simpleTrajetsCount' => $simpleTrajetsCount,
+            'composeTrajetsCount' => $composeTrajetsCount,
         ]);
     }
 

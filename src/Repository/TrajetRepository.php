@@ -47,6 +47,17 @@ class TrajetRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function countByType(string $type): int
+    {
+        return $this->createQueryBuilder('p')
+            ->select('COUNT(p.id)')
+            ->andWhere('p.typeTrajet = :type')
+            ->setParameter('type', $type)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+    
 }
 
 //    /**
