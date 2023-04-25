@@ -53,7 +53,7 @@ public function pdf(Trajet $trajet = null, PdfService $pdf, TrajetRepository $tr
 {
     $trajets = $trajetRepository->findAll();
 
-    $html = $this->render('pdf/index.html.twig', ['trajets' => $trajets]);
+    $html = $this->render('trajet/pdf/index.html.twig', ['trajets' => $trajets]);
     $pdf->showPdfFile($html);
 }
 
