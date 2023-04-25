@@ -18,8 +18,8 @@ class TypeTrajetController extends AbstractController
     public function index(TypeTrajetRepository $typeTrajetRepository, TrajetRepository $TrajetRepository): Response
     {
 
-        $simpleTrajetsCount = $TrajetRepository->countByType(1); //id longTrajet
-        $composeTrajetsCount = $TrajetRepository->countByType(2); //id courtTrajet
+        $simpleTrajetsCount = $TrajetRepository->countByType(2); //id longTrajet
+        $composeTrajetsCount = $TrajetRepository->countByType(3); //id courtTrajet
         
         $data = [
             'simpleTrajetsCount' => $simpleTrajetsCount,
