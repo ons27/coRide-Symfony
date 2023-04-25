@@ -49,7 +49,7 @@ class TrajetController extends AbstractController
     $mpdf->Output('trajets.pdf', 'D');
 }*/
 #[Route('/trajet/pdf', name: 'trajet.pdf')]
-public function pdf(Trajet $trajet = null, PdfService $pdf, TrajetRepository $trajetRepository): Response
+public function pdf(Trajet $trajet = null, PdfService $pdf, TrajetRepository $trajetRepository)
 {
     $trajets = $trajetRepository->findAll();
 
@@ -97,8 +97,8 @@ public function add(Request $request): Response
         $em->flush();
 
         // Send SMS using Twilio
-        $sid = 'ACa62721605d27320e2270fec6eb12370c'; // Replace with your account SID
-        $token = 'cd48cd8b14bad5ef7fa391c35e1a9afd'; // Replace with your auth token
+        $sid = 'AdMw6bugdeYpgsMEHgLdguuUJExfoHb7TZ'; // Replace with your account SID
+        $token = '53a7f675097a3326b7b3ad88381f2bc2'; // Replace with your auth token
         $twilio = new Client($sid, $token);
 
         $recipient_number = '+21620947998'; // Replace with the recipient phone number
