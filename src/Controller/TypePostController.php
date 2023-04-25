@@ -61,6 +61,21 @@ class TypePostController extends AbstractController
 
         return $this->redirectToRoute('admin_type_post'); //specific the name of the route
     }
+
+    #[Route('admin/type/post/{id}/edit', name: 'admin_edit_type')]
+    public function edit(TypePublication $typ, Request $request): Response
+    {
+        $form2=$this->createForm(TypePublicationType::class, $typ);
+        $form2->handleRequest($request);
+        if($form2->isSubmitted()){
+            $em2 = $this->getDoctrine()->getManager();
+            $em2->flush();
+            return $this->redirectToRoute('admin_type_post'); //specific the name of the route
+        }
+        return $this->render('type_post/edit.html.twig', [
+            'form2' => $form2->createView(),
+        ]);
+    }
    
  /*
     #[Route('admin/type/post/{id}/edit', name: 'admin_edit_type')]

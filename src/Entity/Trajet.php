@@ -19,13 +19,23 @@ class Trajet
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\Length(min:5)]
-    #[Assert\NotBlank]
+    #[Assert\NotBlank(message:"Le champ est obligatoire")]
+    #[Assert\Length(
+        min: 2,
+        max: 50,
+        minMessage: "Le depart est au minimum de longuer : {{ limit }} ",
+        maxMessage: "Le depart est au maximum de longuer :  {{ limit }} "
+    )]
     private ?string $depart = null;    
 
     #[ORM\Column(length: 255)]
-    #[Assert\Length(min:5)]
-    #[Assert\NotBlank(message:"Email is required")]
+    #[Assert\NotBlank(message:"Le champ est obligatoire")]
+    #[Assert\Length(
+        min: 2,
+        max: 50,
+        minMessage: "La destination est au minimum de longuer : {{ limit }} ",
+        maxMessage: "La destination est au maximum de longuer :  {{ limit }} "
+    )]
     private ?string $destination = null;
 
 
