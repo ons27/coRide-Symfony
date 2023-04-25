@@ -1,0 +1,62 @@
+{% extends 'admin_base.html.twig' %}
+
+{% block title %}TypeTrajet index{% endblock %}
+
+{% block body %}
+    <h1>TypeTrajet index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Typet</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for type_trajet in type_trajets %}
+            <tr>
+                <td>{{ type_trajet.id }}</td>
+                <td>{{ type_trajet.typet }}</td>
+                <td>
+                    <a href="{{ path('app_type_trajet_show', {'id': type_trajet.id}) }}">show</a>
+                    <a href="{{ path('app_type_trajet_edit', {'id': type_trajet.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_type_trajet_new') }}">Create new</a>
+{% endblock %}
+
+ {% block metier %}
+ <h3>nb simple trajet : {{simpleTrajetsCount}}</h3>
+ <h3>nb compose trajet : {{composeTrajetsCount}}</h3>
+
+  <canvas id="myChart" width="400" height="400"></canvas>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1"></script>
+  <script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: ['Trajet simple', 'Trajet composé'],
+        datasets: [{
+          label: 'Types de trajet',
+          data: [{{ simpleTrajetsCount }}, {{ composeTrajetsCount }}],
+          backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)'
+          ]
+        }]
+      }
+    });
+  </script>
+
+ {% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add Poste{% endblock %}
+
+{% block body %}
+    <h1>Publier Poste</h1>
+
+    {{form_start(form)}}
+    {{include('layouts/_posteForm.html.twig')}}
+    <button class="btn btn-outline-primary">Ajouter poste</button>
+    {{form_end(form)}}
+<br/><br/>
+<div class="holiday-list">
+    <h3>jours fériés 2023 :</h3>
+    {% for holiday in holidays %}
+      <div class="holiday-card">
+        <div class="holiday-title">{{ holiday.name }}</div>
+        <div class="holiday-date">{{ holiday.date|date('m/d/Y') }}</div>
+      </div>
+    {% endfor %}
+  </div>
+
+
+<style>
+  /* Styles for holiday cards */
+  .holiday-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.holiday-card {
+  background-color: orange;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  margin: 10px;
+  max-width: 300px;
+  padding: 20px;
+  text-align: center;
+}
+
+.holiday-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.holiday-date {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+</style>
+
+
+{% endblock %}

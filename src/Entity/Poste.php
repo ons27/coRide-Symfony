@@ -17,12 +17,12 @@ class Poste
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
-    #[Assert\NotBlank(message:"user name is required")]
+    #[Assert\NotBlank(message:"Le champ date de user est obligatoire")]
     #[Assert\Length(
         min: 2,
         max: 50,
-        minMessage: "user name must be at least {{ limit }} characters long",
-        maxMessage: "user name cannot be longer than {{ limit }} characters"
+        minMessage: "Le nom est au minimum de longuer : {{ limit }} ",
+        maxMessage: "Le nom est au maximum de longuer :  {{ limit }} "
     )]
     private ?string $user = null;
 
@@ -33,17 +33,22 @@ class Poste
     private ?string $vehicule = null;
 
     #[ORM\Column]
-    #[Assert\NotBlank(message: "Price is required")]
+    #[Assert\NotBlank(message: "Le champ prix de user est obligatoire")]
     #[Assert\GreaterThan(
         value: 0,
-        message: "price must be greater than {{ compared_value }}"
+        message: "Le prix doit etre superieur a : {{ compared_value }}"
     )]
     private ?float $prix = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Assert\NotBlank(message:"Le champ date de départ est obligatoire")]
+    #[Assert\LessThan(propertyPath:"dateArrive", message:"La date de départ doit être antérieure à la date d'arrivée")]
+
     private ?\DateTimeInterface $dateDepart = null;
 
+    
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Assert\NotBlank(message:"Le champ date de départ est obligatoire")]
     private ?\DateTimeInterface $dateArrive = null;
 
     #[ORM\ManyToOne(inversedBy: 'postes')]

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des trajets{% endblock %}
+
+{% block body %}
+    <h1>Liste des trajets</h1>
+    {% if trajets is empty %}
+        <p>Aucun trajet trouvé.</p>
+    {% else %}
+        <ul>
+            {% for trajet in trajets %}
+                <li>{{ trajet.depart }} - {{ trajet.destination }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}
