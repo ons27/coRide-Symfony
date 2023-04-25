@@ -1,22 +1,16 @@
-{% extends 'trajet/index.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block title %}Liste des personnes{% endblock %}
+{% block title %}Liste des trajets{% endblock %}
 
 {% block body %}
-<div class="row">
-    {% for trajet in trajet %}
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">{{ trajet.depart }}</h5>
-            
-            
-            <a href="{{ path('app_trajet', {id: trajet.id}) }}" class="card-link">
-                <i class="fas fa-info-circle"></i>
-            </a>
-          
-        </div>
-    </div>
-    {% endfor %}
-</div>
+    <h1>Liste des trajets</h1>
+    {% if trajets is empty %}
+        <p>Aucun trajet trouvé.</p>
+    {% else %}
+        <ul>
+            {% for trajet in trajets %}
+                <li>{{ trajet.depart }} - {{ trajet.destination }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 {% endblock %}
-

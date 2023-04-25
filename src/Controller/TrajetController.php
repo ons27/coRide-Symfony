@@ -49,8 +49,11 @@ class TrajetController extends AbstractController
     $mpdf->Output('trajets.pdf', 'D');
 }*/
 #[Route('/trajet/pdf', name: 'trajet.pdf')]
-public function pdf(Trajet $trajet = null, PdfService $pdf) {
-    $html = $this->render('pdf/index.html.twig', ['trajet' => $trajet]);
+public function pdf(Trajet $trajet = null, PdfService $pdf, TrajetRepository $trajetRepository): Response
+{
+    $trajets = $trajetRepository->findAll();
+
+    $html = $this->render('pdf/index.html.twig', ['trajets' => $trajets]);
     $pdf->showPdfFile($html);
 }
 
