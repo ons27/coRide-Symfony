@@ -30,6 +30,10 @@ class TypeTrajet
     {
         return $this->id;
     }
+     public function __toString()
+    {
+        return $this->typet;
+    }
     public function getTypet(): ?string
     {
         return $this->typet;
@@ -41,10 +45,7 @@ class TypeTrajet
 
         return $this;
     }
-    public function __toString()
-    {
-        return $this->typet;
-    }
+   
    
 
 

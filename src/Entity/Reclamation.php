@@ -18,8 +18,10 @@ class Reclamation
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $text_rec = null;
 
+    
+    
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $Type = null;
+    private ?string $sujet = null;
 
   
 
@@ -27,6 +29,11 @@ class Reclamation
 
     #[ORM\Column(nullable: true)]
     private ?int $id_user = null;
+
+    #[ORM\ManyToOne(inversedBy: 'typeRec')]
+    private ?TypeReclamation $typeReclamation = null;
+
+    
 
    
 
@@ -47,18 +54,19 @@ class Reclamation
 
         return $this;
     }
-
-    public function getType(): ?string
+    public function getSujet(): ?string
     {
-        return $this->Type;
+        return $this->sujet;
     }
 
-    public function setType(?string $Type): self
+    public function setSujet(?string $sujet): self
     {
-        $this->Type = $Type;
+        $this->sujet = $sujet;
 
         return $this;
     }
+
+    
 
     
 
@@ -70,6 +78,48 @@ class Reclamation
     public function setIdUser(?int $id_user): self
     {
         $this->id_user = $id_user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, TypeReclamation>
+     */
+    public function getTypeReclamations(): Collection
+    {
+        return $this->typeReclamations;
+    }
+
+    public function addTypeReclamation(TypeReclamation $typeReclamation): self
+    {
+        if (!$this->typeReclamations->contains($typeReclamation)) {
+            $this->typeReclamations->add($typeReclamation);
+            $typeReclamation->setType_r($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTypeReclamation(TypeReclamation $typeReclamation): self
+    {
+        if ($this->typeReclamations->removeElement($typeReclamation)) {
+            // set the owning side to null (unless already changed)
+            if ($typeReclamation->getType_r() === $this) {
+                $typeReclamation->setType_r(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getTypeReclamation(): ?TypeReclamation
+    {
+        return $this->typeReclamation;
+    }
+
+    public function setTypeReclamation(?TypeReclamation $typeReclamation): self
+    {
+        $this->typeReclamation = $typeReclamation;
 
         return $this;
     }
