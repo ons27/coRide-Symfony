@@ -82,7 +82,7 @@ public function add(Request $request): Response
 
         // Send SMS using Twilio
         $sid = 'ACa62721605d27320e2270fec6eb12370c'; // Replace with your account SID
-        $token = '53a7f675097a3326b7b3ad88381f2bc2'; // Replace with your auth token
+        $token = '2fcc7309cb16d8cd825859463b5df3a1'; // Replace with your auth token
         $twilio = new Client($sid, $token);
 
         $recipient_number = '+21620947998'; // Replace with the recipient phone number
