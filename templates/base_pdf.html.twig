@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"> 
+  <div class="#">
+        <h1><span> CoRide</span></h1>
+      </div>
+</head>
+<body>
+
+        {% block body %}
+        {% endblock %}
+        <header id="#" >
+    <div class="#">
+
+      
+
+      <nav id="#" class="">
+        <ul>
+          <li><a class="nav-link scrollto " href="{{path('app_home')}}"></a></li>
+          <li ><a class="nav-link scrollto " href="{{path('app_home')}}#features"><span></span> </a>
+          </li>
+          <li ><a class="nav-link scrollto " href="{{path('app_home')}}#gallery"><span></span> </a>
+          </li>
+          <li ><a class="nav-link scrollto " href="{{path('app_home')}}#team"><span></span> </a>
+          </li>
+          <li ><a class="nav-link scrollto " href="{{path('app_home')}}#pricing"><span></span> </a>
+          </li>
+          <li ><a class="nav-link scrollto " href="{{path('app_home')}}#faq"><span>CoRide</span> </a>
+          </li>
+         
+          <li class="dropdown"><a href="{{path('app_postes')}}"><span></span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="{{path('app_add_poste')}}"></a></li>
+              <li><a href="{{path('app_postes')}}"></a></li>
+            </ul>
+          </li>
+          <li ><a href="{{path('app_trajet')}}"><span></span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li>Trajet</li>
+            </ul>
+          </li>
+          
+        </ul>
+      </nav><!-- .navbar -->
+
+    </div>
+</header>
+    </body>
+
+</html>

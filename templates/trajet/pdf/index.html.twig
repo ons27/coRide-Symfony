@@ -1,18 +1,30 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_pdf.html.twig' %}
 
 {% block title %}Liste des trajets{% endblock %}
 
 {% block body %}
-<br/><br/><br/><br/><br/>
-
     <h1>Liste des trajets</h1>
     {% if trajets is empty %}
         <p>Aucun trajet trouvé.</p>
     {% else %}
-        <ul>
-            {% for trajet in trajets %}
-                <li>{{ trajet.depart }} - {{ trajet.destination }}</li>
-            {% endfor %}
-        </ul>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Depart</th>
+                    <th>Destination</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for trajet in trajets %}
+                    <tr>
+                        <td>{{ trajet.depart }}</td>
+                        <td>{{ trajet.destination }}</td>
+                        <td>{{ trajet.typeTrajet }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     {% endif %}
 {% endblock %}
+

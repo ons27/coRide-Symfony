@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}TrajetController{% endblock %}
+{% block title %}Trajet{% endblock %}
 
 {% block body %}
 
@@ -39,6 +39,9 @@
         </tr>
       </thead>
       <tbody>
+      <a href="{{path('trajet.pdf')}}" target="_blank">
+  <button type="button" class="btn btn-outline-primary">PDF</button>
+</a>
         {% for trajet in trajet %}
           <tr>
             <td>{{ trajet.getDepart }}</td>
@@ -47,7 +50,6 @@
             <td>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Afficher</button>
                   <a href="{{ path('app_edit_trajet', {'id': trajet.id}) }}" class="btn btn-sm btn-outline-secondary">Modifier</a>
                   <a href="{{ path('app_delete_trajet', {'id': trajet.id}) }}" class="btn btn-sm btn-outline-secondary" onclick="return confirm('Attention ce ci va supprimer le trajet')">Supprimer</a>
                 </div>
@@ -60,4 +62,6 @@
   {% else %}
     <p>Aucun trajet ne correspond à votre recherche.</p>
   {% endif %}
+  <br/><br/><br/><br/><br/>
+
 {% endblock %}
