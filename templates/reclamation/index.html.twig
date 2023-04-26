@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reclamation {% endblock %}
+
+{% block body %}
+<br/><br/><br/><br/><br/>
+
+    <h1>Reclamation </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Text_rec</th>
+                <th>Sujet</th>
+                <th>Id_employe</th>
+                <th>Id_user</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reclamation in reclamations %}
+            <tr>
+                <td>{{ reclamation.id }}</td>
+                <td>{{ reclamation.textRec }}</td>
+                <td>{{ reclamation.sujet }}</td>
+                <td>{{ reclamation.idEmploye }}</td>
+                <td>{{ reclamation.idUser }}</td>
+                <td>
+                <div class="d-flex justify-content-between align-items-center">
+								<div class="btn-group">
+									<a href="{{ path('app_reclamation_show', {'id': reclamation.id}) }}">
+										<button type="submit" class="btn btn-primary">Modifier</button>
+									</a>
+									<a href="{{ path('app_reclamation_delete', {'id': reclamation.id}) }}" onclick="return confirm('Êtes-vous sûr de bien vouloir supprimer cette Reclamation?')">
+										<button type="submit" class="btn btn-primary" style="margin-left: 10px;">Supprimer</button>
+									</a>
+								</div>
+							</div>
+          
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_reclamation_new') }}">Create new</a>
+    <br/><br/><br/><br/><br/>
+
+{% endblock %}

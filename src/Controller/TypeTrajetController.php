@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class TypeTrajetController extends AbstractController
 {
-    #[Route('/type', name: 'app_type_trajet_index', methods: ['GET'])]
+    #[Route('/admin/type/trajet', name: 'app_type_trajet_index', methods: ['GET'])]
     public function index(TypeTrajetRepository $typeTrajetRepository, TrajetRepository $TrajetRepository): Response
     {
 
@@ -34,7 +34,7 @@ class TypeTrajetController extends AbstractController
     }
 
   
-    #[Route('/new', name: 'app_type_trajet_new', methods: ['GET', 'POST'])]
+    #[Route('/admin/type/trajet/new', name: 'app_type_trajet_new', methods: ['GET', 'POST'])]
     public function new(Request $request, TypeTrajetRepository $typeTrajetRepository): Response
     {
         $typeTrajet = new TypeTrajet();
@@ -53,7 +53,7 @@ class TypeTrajetController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_type_trajet_show', methods: ['GET'])]
+    #[Route('/admin/type/trajet/{id}', name: 'app_type_trajet_show', methods: ['GET'])]
     public function show(TypeTrajet $typeTrajet): Response
     {
         return $this->render('type_trajet/show.html.twig', [
@@ -61,7 +61,7 @@ class TypeTrajetController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_type_trajet_edit', methods: ['GET', 'POST'])]
+    #[Route('/admin/type/trajet/edit/{id}', name: 'app_type_trajet_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, TypeTrajet $typeTrajet, TypeTrajetRepository $typeTrajetRepository): Response
     {
         $form = $this->createForm(TypeTrajetType::class, $typeTrajet);
@@ -79,7 +79,7 @@ class TypeTrajetController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_type_trajet_delete', methods: ['POST'])]
+    #[Route('/admin/type/trajet/delete/{id}', name: 'app_type_trajet_delete', methods: ['POST'])]
     public function delete(Request $request, TypeTrajet $typeTrajet, TypeTrajetRepository $typeTrajetRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$typeTrajet->getId(), $request->request->get('_token'))) {

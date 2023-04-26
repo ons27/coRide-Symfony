@@ -67,7 +67,7 @@ public function pdf(Trajet $trajet = null, PdfService $pdf, TrajetRepository $tr
         ]);
     }
 
-   #[Route('/add/trajet', name: 'app_add_trajet')]
+   #[Route('/trajet/new', name: 'app_add_trajet')]
 public function add(Request $request): Response
 {
     $trajet = new Trajet();
@@ -139,7 +139,7 @@ public function delete(Trajet $trajet/*, \Swift_Mailer $mailer*/): RedirectRespo
     
 
 
-    #[Route('/{id}/trajet', name: 'app_edit_trajet')]
+    #[Route('/trajet/{id}/edit', name: 'app_edit_trajet')]
     public function edit(Trajet $trajet, Request $request): Response
     {
         $form = $this->createForm(TrajetType::class, $trajet);
