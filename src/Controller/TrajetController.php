@@ -25,7 +25,6 @@ use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 
 
-
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,28 +32,13 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class TrajetController extends AbstractController
 {
-   /* #[Route('/trajet/pdf', name: 'app_trajet')]
-    public function pdf(TrajetRepository $TrajetRepository, TypeTrajetRepository $TypeTrajetRepository)
-{
-    $trajet = $TrajetRepository->findBy([], ['depart' => 'ASC']);
-    $types = $TypeTrajetRepository->findAll();
-    
-    $html = $this->renderView('trajet/index.html.twig', [
-        'trajet' => $trajet,
-        'types' => $types
-    ]);
-    
-    $mpdf = new Mpdf();
-    $mpdf->WriteHTML($html);
-    $mpdf->Output('trajets.pdf', 'D');
-}*/
 #[Route('/trajet/pdf', name: 'trajet.pdf')]
 public function pdf(Trajet $trajet = null, PdfService $pdf, TrajetRepository $trajetRepository): Response
 {
     $trajets = $trajetRepository->findAll();
 
     $html = $this->render('trajet/pdf/index.html.twig', ['trajets' => $trajets]);
-    $pdf->showPdfFile($html);
+    $pdf->showPdfFile($html); 
 }
 
 

@@ -1,67 +1,74 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Trajet{% endblock %}
+{% block title %}Trajet
+{% endblock %}
 
 {% block body %}
 
-<br/><br/><br/><br/><br/>
-   
-  <h1>Liste des trajets</h1>
-  {# Type filter form #}
-  <form method="get" action="{{ path('app_trajet') }}" class="mb-4">
-    <div class="input-group">
-      <select name="typet" class="form-control">
-        <option value="">Filtrer par type</option>
-        {% for type in types %}
-          <option value="{{ type }}">{{ type }}</option>
-        {% endfor %}
-      </select>
-      <button type="submit" class="btn btn-primary">Filtrer</button>
-    </div>
-  </form>
-  {# Search form #}
-  <form method="get" action="{{ path('app_trajet') }}" class="mb-4">
-    <div class="input-group">
-      <input type="text" name="q" value="{{ app.request.get('q') }}" class="form-control" placeholder="Rechercher un trajet">
-      <button type="submit" class="btn btn-primary">Rechercher</button>
-    </div>
-  </form>
+	<br/><br/><br/><br/><br/>
 
-  {# Search results #}
-  {% if trajet is not empty %}
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Départ</th>
-          <th scope="col">Destination</th>
-          <th scope="col">Type</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-      <a href="{{path('trajet.pdf')}}" target="_blank">
-  <button type="button" class="btn btn-outline-primary">PDF</button>
-</a>
-        {% for trajet in trajet %}
-          <tr>
-            <td>{{ trajet.getDepart }}</td>
-            <td>{{ trajet.getDestination }}</td>
-            <td>{{ trajet.getTypeTrajet }}</td>
-            <td>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <a href="{{ path('app_edit_trajet', {'id': trajet.id}) }}" class="btn btn-sm btn-outline-secondary">Modifier</a>
-                  <a href="{{ path('app_delete_trajet', {'id': trajet.id}) }}" class="btn btn-sm btn-outline-secondary" onclick="return confirm('Attention ce ci va supprimer le trajet')">Supprimer</a>
-                </div>
-              </div>
-            </td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  {% else %}
-    <p>Aucun trajet ne correspond à votre recherche.</p>
-  {% endif %}
-  <br/><br/><br/><br/><br/>
+	<h1>Liste des trajets</h1>
+	{# Type filter form #}
+	<form method="get" action="{{ path('app_trajet') }}" class="mb-4">
+		<div class="input-group">
+			<select name="typet" class="form-control">
+				<option value="">Filtrer par type</option>
+				{% for type in types %}
+					<option value="{{ type }}">{{ type }}</option>
+				{% endfor %}
+			</select>
+			<button type="submit" class="btn btn-primary">Filtrer</button>
+		</div>
+	</form>
+	{# Search form #}
+	<form method="get" action="{{ path('app_trajet') }}" class="mb-4">
+		<div class="input-group">
+			<input type="text" name="q" value="{{ app.request.get('q') }}" class="form-control" placeholder="Rechercher un trajet">
+			<button type="submit" class="btn btn-primary">Rechercher</button>
+		</div>
+	</form>
+
+	{# Search results #}
+	{% if trajet is not empty %}
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Départ</th>
+					<th scope="col">Destination</th>
+					<th scope="col">Type</th>
+					<th scope="col"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<a href="{{path('trajet.pdf')}}" target="_blank">
+					<button type="button" class="btn btn-outline-primary">PDF</button>
+				</a>
+				{% for trajet in trajet %}
+					<tr>
+						<td>{{ trajet.getDepart }}</td>
+						<td>{{ trajet.getDestination }}</td>
+						<td>{{ trajet.getTypeTrajet }}</td>
+						<td>
+							<div class="d-flex justify-content-between align-items-center">
+								<div class="btn-group">
+									<a href="{{ path('app_edit_trajet', {'id': trajet.id}) }}">
+										<button type="submit" class="btn btn-primary">Modifier</button>
+									</a>
+									<a href="{{ path('app_delete_trajet', {'id': trajet.id}) }}" onclick="return confirm('Êtes-vous sûr de bien vouloir supprimer cet Trajet?')">
+										<button type="submit" class="btn btn-primary" style="margin-left: 10px;">Supprimer</button>
+									</a>
+								</div>
+							</div>
+
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	{% else %}
+		<p>Aucun trajet ne correspond à votre recherche.</p>
+	{% endif %}
+	<br/><br/><br/><br/><br/>
 
 {% endblock %}
+
