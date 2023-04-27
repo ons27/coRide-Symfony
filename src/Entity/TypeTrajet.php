@@ -59,7 +59,7 @@ class TypeTrajet
     }
     public function setType(string $Type): self
     {
-        $this->typet = $Type;
+        $this->type = $Type;
 
         return $this;
     }

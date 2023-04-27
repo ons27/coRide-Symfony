@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\TypeTrajet;
+use App\Entity\Trajet;
 use App\Form\TypeTrajetType;
 use App\Repository\TypeTrajetRepository;
 use App\Repository\TrajetRepository;

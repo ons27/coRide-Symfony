@@ -14,7 +14,7 @@ use App\Repository\ReclamationRepository;
 
 class TypeReclamationController extends AbstractController
 {
-    #[Route('/type/reclamation', name: 'app_type_reclamation_index', methods: ['GET'])]
+    #[Route('/admin/type/reclamation', name: 'app_type_reclamation_index', methods: ['GET'])]
     public function index(TypeReclamationRepository $typeReclamationRepository): Response
     {
         return $this->render('type_reclamation/index.html.twig', [
@@ -22,7 +22,7 @@ class TypeReclamationController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_type_reclamation_new', methods: ['GET', 'POST'])]
+    #[Route('/admin/type/reclamation/new', name: 'app_type_reclamation_new', methods: ['GET', 'POST'])]
     public function new(Request $request, TypeReclamationRepository $typeReclamationRepository): Response
     {
         $typeReclamation = new TypeReclamation();
@@ -41,7 +41,7 @@ class TypeReclamationController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_type_reclamation_show', methods: ['GET'])]
+    #[Route('/admin/type/reclamation/{id}', name: 'app_type_reclamation_show', methods: ['GET'])]
     public function show(TypeReclamation $typeReclamation): Response
     {
         return $this->render('type_reclamation/show.html.twig', [
@@ -49,7 +49,7 @@ class TypeReclamationController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_type_reclamation_edit', methods: ['GET', 'POST'])]
+    #[Route('/admin/type/reclamation/edit/{id}', name: 'app_type_reclamation_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, TypeReclamation $typeReclamation, TypeReclamationRepository $typeReclamationRepository): Response
     {
         $form = $this->createForm(TypeReclamationType::class, $typeReclamation);
@@ -67,7 +67,7 @@ class TypeReclamationController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_type_reclamation_delete', methods: ['POST'])]
+    #[Route('/admin/type/reclamation/delete/{id}', name: 'app_type_reclamation_delete', methods: ['POST'])]
     public function delete(Request $request, TypeReclamation $typeReclamation, TypeReclamationRepository $typeReclamationRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$typeReclamation->getId(), $request->request->get('_token'))) {
