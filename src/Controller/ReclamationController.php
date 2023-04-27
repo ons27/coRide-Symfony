@@ -3,8 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Reclamation;
+use App\Entity\TypeReclamation;
+use App\Form\TypeReclamationType;
+
 use App\Form\ReclamationType;
 use App\Repository\ReclamationRepository;
+use App\Repository\TypeReclamationRepository;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,29 +20,51 @@ use Symfony\Component\Routing\Annotation\Route;
 class ReclamationController extends AbstractController
 {
     #[Route('/reclamation', name: 'app_reclamation_index', methods: ['GET'])]
-    public function index(ReclamationRepository $reclamationRepository): Response
+    public function index(ReclamationRepository $ReclamationRepository , TypeReclamationRepository $TypeReclamationRepository, Request $request): Response
     {
+        $searchTerm = $request->query->get('q');
+        $typeRec = $request->query->get('type_r');
+        if ($searchTerm) {
+            $reclamations = $ReclamationRepository->findBySearchTerm($searchTerm);
+        } else if ($typeRec) {
+            $typeReclamation = $TypeReclamationRepository->findOneBy(['type_r' => $typeRec]);
+            $reclamations = $ReclamationRepository->findBy(['typeReclamation' => $typeReclamation], ['text_rec' => 'ASC']);
+        } else {
+            $reclamations = $ReclamationRepository->findBy([], ['text_rec' => 'ASC']);
+        }
+        $typeReclamations = $TypeReclamationRepository->findAll();
         return $this->render('reclamation/index.html.twig', [
-            'reclamations' => $reclamationRepository->findAll(),
+            'controller_name' => 'ReclamationController',
+            'reclamation' => $reclamations,
+            'title' => 'Historique',
+            'subtitle' => 'reclamation',
+            'searchTerm' => $searchTerm,
+            'typeReclamations' => $typeReclamations,
+            'selectedType' => $typeRec
         ]);
     }
 
     #[Route('/reclamation/new', name: 'app_reclamation_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, ReclamationRepository $reclamationRepository): Response
+    public function add(Request $request): Response
     {
-        $reclamations = new Reclamation();
-        $form = $this->createForm(ReclamationType::class, $reclamations);
+        $reclamation = new Reclamation();
+        $form = $this->createForm(ReclamationType::class, $reclamation);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $reclamationRepository->save($reclamations, true);
+            $em = $this->getDoctrine()->getManager();
+        $em->persist($reclamation);
+        $em->flush();
 
             return $this->redirectToRoute('app_reclamation_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('reclamation/new.html.twig', [
-            'reclamations' => $reclamations,
-            'form' => $form,
+        return $this->render('reclamation/new.html.twig', [
+            'title' => 'Ajouter',
+            'subtitle' => 'reclamations',
+            'controller_name' => 'ReclamationController',
+
+            'form' => $form->createView(),
         ]);
     }
 
