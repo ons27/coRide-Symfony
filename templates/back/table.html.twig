@@ -1,0 +1,133 @@
+{% extends 'back/index.html.twig' %}
+
+{% block stylesheets %}
+{{ parent() }}
+<style>
+  .t-row{
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 1fr 6fr 6fr 3fr 4fr 4fr;
+    gap: 30px;
+  }
+
+  .t-row:hover{
+    background-color: #F3F3F3;
+  }
+</style>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script>
+  pageSetup();
+
+  function pageSetup(){
+    $(document).ready(() => {
+      tableSearch();
+      btnAddUser();
+    });
+  }
+
+  function btnAddUser(){
+    document.getElementById("add-btn").addEventListener("click", () => {
+      $.ajax({
+                type: 'POST',
+                url: "/edit-profile",
+                data:{
+                    "login-submit" : "123",
+                },
+                success: function(result) {
+                    $("#t-search").remove();
+                    $("#c-panel").empty().html(result);
+                },
+                error: function(result) {
+                }
+            });
+    });
+  }
+
+  function tableSearch(){
+    let test = true;
+    document.getElementById("t-search").addEventListener("input", () => { //WAIT FOR INPUT
+      document.getElementsByName("t-row").forEach((e) => { //GET ALL DIVS WITH NAME T-ROW
+        test = false;
+        for(const ch of e.children){
+          let str = ch.innerText;
+          console.log(document.getElementById("t-search").value);
+          console.log(str);
+          if(str.includes(document.getElementById("t-search").value)){ //compare with search input
+            test = true;
+          }
+        }
+        if(test){
+          e.style.display = "grid"; //SHOW
+        } else {
+          e.style.display = "none"; //DON'T SHOW
+        }
+      });
+    });
+  }
+
+  function editProfile(id){
+    document.getElementById(id).addEventListener("click", () => { 
+      $.ajax({
+                type: 'POST',
+                url: "/edit-profile",
+                data:{
+                    "login-submit" : "123",
+                    "edit-id": id,
+                },
+                success: function(result) {
+                    $("#t-search").remove();
+                    $("#c-panel").empty().html(result);
+                },
+                error: function(result) {
+                }
+            });
+    });
+  }
+</script>
+{% endblock %}
+
+{% block body %}
+<input type="text" id="t-search" style="margin-top: 40px; margin-bottom: 10px; margin-left: 30px;">
+
+<div class="col-md-12">
+            <div class="content-panel" id="c-panel">
+              <h4><i class="fa fa-angle-right"></i> Basic Table</h4>
+              <hr>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Phone</th>
+                  </tr>
+                </thead>
+              </table>
+              <div>
+                  {% for u in mohammed %}
+                    <div class="t-row" name="t-row" id="{{ u.getId }}">
+                      <div style="margin-left: 10px;">{{ loop.index }}</div>
+                      <div> {{ u.getName }} </div>
+                      <div>{{ u.getLastName }}</div>
+                      <div>{{ u.getEmail }}</div>
+                      <div>
+                      {% for r in u.getRoles %}
+                        <div>{{ r }}</div>
+                      {% endfor %}
+                      </div>
+                      <div>{{ u.getPhone }}</div>
+                    </div>
+                    <script>
+                      editProfile({{ u.getId }});
+                    </script>
+                  {% endfor %}
+              </div>
+              <div class="btn btn-theme" id="add-btn">Add User</div>
+            </div>
+          </div>
+{% endblock %}

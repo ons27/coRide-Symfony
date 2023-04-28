@@ -25,6 +25,7 @@ use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 
 
+
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,13 +33,28 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class TrajetController extends AbstractController
 {
+   /* #[Route('/trajet/pdf', name: 'app_trajet')]
+    public function pdf(TrajetRepository $TrajetRepository, TypeTrajetRepository $TypeTrajetRepository)
+{
+    $trajet = $TrajetRepository->findBy([], ['depart' => 'ASC']);
+    $types = $TypeTrajetRepository->findAll();
+    
+    $html = $this->renderView('trajet/index.html.twig', [
+        'trajet' => $trajet,
+        'types' => $types
+    ]);
+    
+    $mpdf = new Mpdf();
+    $mpdf->WriteHTML($html);
+    $mpdf->Output('trajets.pdf', 'D');
+}*/
 #[Route('/trajet/pdf', name: 'trajet.pdf')]
-public function pdf(Trajet $trajet = null, PdfService $pdf, TrajetRepository $trajetRepository): Response
+public function pdf(Trajet $trajet = null, PdfService $pdf, TrajetRepository $trajetRepository)
 {
     $trajets = $trajetRepository->findAll();
 
-    $html = $this->render('trajet/pdf/index.html.twig', ['trajets' => $trajets]);
-    $pdf->showPdfFile($html); 
+    $html = $this->render('pdf/index.html.twig', ['trajets' => $trajets]);
+    $pdf->showPdfFile($html);
 }
 
 
@@ -67,7 +83,7 @@ public function pdf(Trajet $trajet = null, PdfService $pdf, TrajetRepository $tr
         ]);
     }
 
-   #[Route('/trajet/new', name: 'app_add_trajet')]
+   #[Route('/add/trajet', name: 'app_add_trajet')]
 public function add(Request $request): Response
 {
     $trajet = new Trajet();
@@ -81,8 +97,8 @@ public function add(Request $request): Response
         $em->flush();
 
         // Send SMS using Twilio
-        $sid = 'ACa62721605d27320e2270fec6eb12370c'; // Replace with your account SID
-        $token = '2fcc7309cb16d8cd825859463b5df3a1'; // Replace with your auth token
+        $sid = 'AdMw6bugdeYpgsMEHgLdguuUJExfoHb7TZ'; // Replace with your account SID
+        $token = '53a7f675097a3326b7b3ad88381f2bc2'; // Replace with your auth token
         $twilio = new Client($sid, $token);
 
         $recipient_number = '+21620947998'; // Replace with the recipient phone number
@@ -139,7 +155,7 @@ public function delete(Trajet $trajet/*, \Swift_Mailer $mailer*/): RedirectRespo
     
 
 
-    #[Route('/trajet/{id}/edit', name: 'app_edit_trajet')]
+    #[Route('/{id}/trajet', name: 'app_edit_trajet')]
     public function edit(Trajet $trajet, Request $request): Response
     {
         $form = $this->createForm(TrajetType::class, $trajet);

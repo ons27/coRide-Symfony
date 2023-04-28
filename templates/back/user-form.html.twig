@@ -1,0 +1,361 @@
+<script>
+let current_data = new Array();
+let d_tmp = null;
+    pageSetup();
+    function pageSetup(){
+        $(document).ready(() => {
+            document.getElementById("save-btn").addEventListener("click", () => {
+                if(checkUser()){
+                    for(let k = 0; k < current_data.length; k++){
+                        console.log(current_data[k]);
+                    }
+                    current_data[7] = current_data[7].slice(6, 10) + "-" + current_data[7].slice(0, 2) + "-" + current_data[7].slice(3, 5);
+                    if(document.getElementById("az12")){
+                      editUser(document.getElementById("az12").firstChild.id);
+                    } else {
+                      addUser();
+                    }
+                }
+            });
+        });
+    }
+        function editUser(id){
+          $.ajax({
+                type: 'POST',
+                url: "/back/add-form",
+                data:{
+                    "sign-up" : "123",
+                    "edit-id": id,
+                    "name": current_data[0],
+                    "lname": current_data[1],
+                    "email": current_data[2],
+                    "password": current_data[3],
+                    "gender": current_data[4],
+                    "role": current_data[5],
+                    "phone": current_data[6],
+                    "birthday": current_data[7],
+                    "access": current_data[8],
+                },
+                success: function(result) {
+                    window.location.href = "/back";
+                    //console.log(result);
+                },
+                error: function(result) {
+                    //console.log(result);
+                }
+            })
+        }
+
+        function addUser(){
+            $.ajax({
+                type: 'POST',
+                url: "/back/add-form",
+                data:{
+                    "sign-up" : "123",
+                    "name": current_data[0],
+                    "lname": current_data[1],
+                    "email": current_data[2],
+                    "password": current_data[3],
+                    "gender": current_data[4],
+                    "role": current_data[5],
+                    "phone": current_data[6],
+                    "birthday": current_data[7],
+                    "access": current_data[8]
+                },
+                success: function(result) {
+                    window.location.href = "/back";
+                    //console.log(result);
+                },
+                error: function(result) {
+                    //console.log(result);
+                }
+            })
+        }
+
+        function checkUser(){
+            current_data = []
+            let test = true;
+            let i = 0;
+            document.getElementsByName("ff").forEach((e) => {
+                if(document.getElementById("e" + i) != null){
+                    document.getElementById("e" + i).remove();
+                }
+                current_data.push(e.value);
+                if(e.value){
+                    switch(true){
+                        case ((i == 0)||(i == 1)):
+                            if(!onlyLetters(e.value)){
+                                let error = document.createElement("div");
+                                let tmp_id = "e" + i;
+                                error.setAttribute("id", tmp_id);
+                                error.innerText = "Name must contain only letters!"
+                                error.style.color = "red";
+                                e.parentElement.appendChild(error);
+                                test = false;
+                            }
+                            break;
+                        case (i == 2):
+                            if(!checkMail(e.value)){
+                                let error = document.createElement("div");
+                                let tmp_id = "e" + i;
+                                error.setAttribute("id", tmp_id);
+                                error.innerText = "Email must be valid!"
+                                error.style.color = "red";
+                                e.parentElement.appendChild(error);
+                                test = false;  
+                            }
+                            break;
+                        case (i == 3):
+                            if(checkLength(e.value)){
+                                let error = document.createElement("div");
+                                let tmp_id = "e" + i;
+                                error.setAttribute("id", tmp_id);
+                                error.innerText = "Password must be 8 characters long!"
+                                error.style.color = "red";
+                                e.parentElement.appendChild(error);
+                                test = false;  
+                            }
+                            break;
+                        case (i == 6):
+                            if(!onlyNumbers(e.value)){
+                                let error = document.createElement("div");
+                                let tmp_id = "e" + i;
+                                error.setAttribute("id", tmp_id);
+                                error.innerText = "Phone number must be composed of only digits!"
+                                error.style.color = "red";
+                                e.parentElement.appendChild(error);
+                                test = false;   
+                            }
+                            break;
+                    }
+                } else {
+                    if (((i >= 0)&&(i <= 3))||(i == 6)){
+                        let error = document.createElement("div");
+                        let tmp_id = "e" + i;
+                        error.setAttribute("id", tmp_id);
+                        error.innerText = "Field must not be empty!"
+                        error.style.color = "red";
+                        e.parentElement.appendChild(error);
+                        test = false;
+                    }
+                }
+                i = i + 1;
+            });
+            
+            return test;
+        }
+
+        function onlyLetters(str){
+            return /^[A-Za-z]*$/.test(str);
+        }
+
+        function onlyNumbers(str){
+            return /^[0-9]*$/.test(str);
+        }
+
+        function checkMail(str){
+            return ((str.endsWith("@esprit.tn"))||(str.endsWith("@coride.tn")));
+        }
+
+        function checkLength(str, l){
+            return (str.length >= l);
+        }
+</script>
+<section id="container">
+  <link href="ss" rel="">
+  <section id="main-content">
+    <section class="wrapper">
+      <h3><i class="fa fa-angle-right"></i> Advanced Form Components</h3>
+      <div class="row mt">
+        <!--  DATE PICKERS -->
+        <div class="col-lg-12">
+          <div class="form-panel">
+            <form action="#" class="form-horizontal style-form">
+              {% if user %}
+              <div id="az12"><div id="{{ user.id }}"></div></div>
+              <div class="form-group">
+                <label class="col-sm-2 col-sm-2 control-label">Name</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="ff" value="{{ user.name }}">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 col-sm-2 control-label">Last Name</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="ff" value="{{ user.lastName }}">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 col-sm-2 control-label">Email</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="ff" value="{{ user.email }}">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 col-sm-2 control-label">Password</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" name="ff" value="{{ user.getPassword }}">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 col-sm-2 control-label">Gender</label>
+                <div class="col-sm-10">
+                    <select  name="ff" class="form-control">
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                    </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 col-sm-2 control-label">Roles</label>
+                <div class="col-sm-10">
+                    <select  name="ff" class="form-control">
+                      <option value="ROLE_ADMIN">Admin</option>
+                      <option value="ROLE_PASSENGER">Passenger</option>
+                      <option value="ROLE_DRIVER">Driver</option>
+                    </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 col-sm-2 control-label">Phone</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="ff" value="{{ user.phone }}">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-md-3">Birthday</label>
+                <div class="col-md-3 col-xs-11">
+                  <input class="form-control form-control-inline input-medium default-date-picker" size="16" type="text"
+                    name="ff" value="{{ user.birthday }}">
+                  <span class="help-block">Select date</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 col-sm-2 control-label">Access</label>
+                <div class="col-sm-10">
+                    <select  name="ff" class="form-control">
+                      <option value="Oui">Oui</option>
+                      <option value="Non">Non</option>
+                    </select>
+                </div>
+              </div>
+              {% else %}
+                <div class="form-group">
+                <label class="col-sm-2 col-sm-2 control-label">Name</label>
+                <div class="col-sm-10">
+                    <input type="text" name="ff" class="form-control">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 col-sm-2 control-label">Last Name</label>
+                <div class="col-sm-10">
+                    <input type="text" name="ff" class="form-control">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 col-sm-2 control-label">Email</label>
+                <div class="col-sm-10">
+                    <input type="text" name="ff" class="form-control">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 col-sm-2 control-label">Password</label>
+                <div class="col-sm-10">
+                    <input type="password" name="ff" class="form-control">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 col-sm-2 control-label">Gender</label>
+                <div class="col-sm-10">
+                    <select  name="ff" class="form-control">
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                    </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 col-sm-2 control-label">Roles</label>
+                <div class="col-sm-10">
+                    <select  name="ff" class="form-control">
+                      <option value="ROLE_ADMIN">Admin</option>
+                      <option value="ROLE_PASSENGER">Passenger</option>
+                      <option value="ROLE_DRIVER">Driver</option>
+                    </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 col-sm-2 control-label">Phone</label>
+                <div class="col-sm-10">
+                    <input type="text" name="ff" class="form-control">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-md-3">Birthday</label>
+                <div class="col-md-3 col-xs-11">
+                  <input class="form-control form-control-inline input-medium default-date-picker" name="ff" size="16" type="text"
+                    value="">
+                  <span class="help-block">Select date</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 col-sm-2 control-label">Access</label>
+                <div class="col-sm-10">
+                    <select  name="ff" class="form-control">
+                      <option value="Oui">Oui</option>
+                      <option value="Non">Non</option>
+                    </select>
+                </div>
+              </div>
+              {% endif %}
+              <div class="btn btn-theme" id="save-btn">Save</div>
+            </form>
+          </div>
+          <!-- /form-panel -->
+        </div>
+        <!-- /col-lg-12 -->
+      </div>
+    </section>
+    <!-- /wrapper -->
+  </section>
+  <!-- /MAIN CONTENT -->
+  <!--main content end-->
+  <!--footer start-->
+  <footer class="site-footer">
+    <div class="text-center">
+      <p>
+        &copy; Copyrights <strong>Dashio</strong>. All Rights Reserved
+      </p>
+      <div class="credits">
+        <!--
+            You are NOT allowed to delete the credit link to TemplateMag with free version.
+            You can delete the credit link only if you bought the pro version.
+            Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/dashio-bootstrap-admin-template/
+            Licensing information: https://templatemag.com/license/
+          -->
+        Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
+      </div>
+      <a href="advanced_form_components.html#" class="go-top">
+        <i class="fa fa-angle-up"></i>
+      </a>
+    </div>
+  </footer>
+  <!--footer end-->
+</section>
+<!-- js placed at the end of the document so the pages load faster -->
+<script src="{{ asset('lib/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('lib/bootstrap/js/bootstrap.min.js') }}"></script>
+<script class="include" type="text/javascript" src="{{ asset('lib/jquery.dcjqaccordion.2.7.js') }}"></script>
+<script src="{{ asset('lib/jquery.scrollTo.min.js') }}"></script>
+<script src="{{ asset('lib/jquery.nicescroll.js') }}" type="text/javascript"></script>
+<!--common script for all pages-->
+<script src="lib/common-scripts.js"></script>
+<!--script for this page-->
+<script src="{{ asset('lib/jquery-ui-1.9.2.custom.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('lib/bootstrap-fileupload/bootstrap-fileupload.js') }}"></script>
+<script type="text/javascript" src="{{ asset('lib/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
+<script type="text/javascript" src="{{ asset('lib/bootstrap-daterangepicker/date.js') }}"></script>
+<script type="text/javascript" src="{{ asset('lib/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+<script type="text/javascript" src="{{ asset('lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js') }}"></script>
+<script type="text/javascript" src="{{ asset('lib/bootstrap-daterangepicker/moment.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('lib/bootstrap-timepicker/js/bootstrap-timepicker.js') }}"></script>
+<script src="{{ asset('lib/advanced-form-components.js') }}"></script>

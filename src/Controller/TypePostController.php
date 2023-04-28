@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class TypePostController extends AbstractController
 {
 
-    #[Route('admin/type/poste', name: 'admin_type_post')]
+    #[Route('admin/type/post', name: 'admin_type_post')]
     public function index(PosteRepository $PosteRepository,TypePublicationRepository $TypePosteRepository,Request $request): Response
     {
         $longTrajetCount = $PosteRepository->countByType(1); //id longTrajet
@@ -52,7 +52,7 @@ class TypePostController extends AbstractController
 
         ]);
     }
-    #[Route('admin/type/poste/delete/{id}', name: 'admin_delete_type')]
+    #[Route('admin/type/post/{id}/delete', name: 'admin_delete_type')]
     public function delete(TypePublication $TypePublication): RedirectResponse
     {
         $em = $this->getDoctrine()->getManager();
@@ -62,7 +62,7 @@ class TypePostController extends AbstractController
         return $this->redirectToRoute('admin_type_post'); //specific the name of the route
     }
 
-    #[Route('admin/type/poste/edit/{id}', name: 'admin_edit_type')]
+    #[Route('admin/type/post/{id}/edit', name: 'admin_edit_type')]
     public function edit(TypePublication $typ, Request $request): Response
     {
         $form2=$this->createForm(TypePublicationType::class, $typ);

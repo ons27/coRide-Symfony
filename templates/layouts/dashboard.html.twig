@@ -8,19 +8,13 @@
     <script src="https://kit.fontawesome.com/1256cd022a.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="{{ asset('assets/admin.js') }}"></script>
-    <script src="{{ asset('assets/css/style.css') }}"></script>
 </head>
 <body>
 
     <header>
-        <h1>
-            <a href="{{path('app_dashboard')}}">
-              <span>
-                <img src="assets/img/coride_logo.png" alt="" class="img-fluid" style="width: 100px;">
-              </span>
-            </a>
-          </h1>
-          
+        <a href="#" class="logo">
+            <img src="img/AppKD.svg" alt="">logo
+        </a>
         <nav class="navbar">
             <div class="search-box">
                 <input type="text" placeholder="Hey admin, tu cherches quelque chose ?" type="text">
@@ -28,7 +22,7 @@
             </div>
         </nav>
         <div class="icons">
-            <a href="https://github.com/ons27/coRide-Symfony" target="_blank">
+            <a href="#" target="_blank">
                 <div class="icons">
                     <div class="fa-brands fa-github" />
                 </div>
@@ -48,19 +42,19 @@
             <li>
                 <div id="b" class="">
                     <i class='bx bx-box'></i>
-                    <a href="admin/type/poste" class="logo"><span class="links_name">Type Poste</span></a>
+                    <a href="/admin/type/post" class="logo"><span class="links_name">Type Poste</span></a>
                 </div>
             </li>
             <li>
                 <div id="c" class="">
                     <i class='bx bx-list-ul'></i>
-                    <a href="/admin/type/trajet" class="logo"><span class="links_name">Type Trajet</span></a>
+                    <a href="/type" class="logo"><span class="links_name">Type Trajet</span></a>
                 </div>
             </li>
             <li>
                 <div id="d" class="">
                     <i class='bx bx-line-chart'></i>
-                    <a href="/admin/type/reclamation" class="logo"><span class="links_name">Type Reclamation</span></a>
+                    <span class="links_name">Reclamation</span>
                 </div>
             </li>
             <li>

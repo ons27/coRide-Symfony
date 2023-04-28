@@ -1,11 +1,9 @@
 {% extends 'admin_base.html.twig' %}
 
-{% block title %}TypeTrajet {% endblock %}
+{% block title %}TypeTrajet index{% endblock %}
 
 {% block body %}
-<br/><br/><br/><br/><br/>
-
-    <h1>TypeTrajet </h1>
+    <h1>TypeTrajet index</h1>
 
     <table class="table">
         <thead>
@@ -21,24 +19,24 @@
                 <td>{{ type_trajet.id }}</td>
                 <td>{{ type_trajet.typet }}</td>
                 <td>
-                    <a href="{{ path('app_type_trajet_show', {'id': type_trajet.id}) }}">Montrer</a>
-                    <a href="{{ path('app_type_trajet_edit', {'id': type_trajet.id}) }}">Modifier</a>
+                    <a href="{{ path('app_type_trajet_show', {'id': type_trajet.id}) }}">show</a>
+                    <a href="{{ path('app_type_trajet_edit', {'id': type_trajet.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">Aucun enregistrement trouvé</td>
+                <td colspan="3">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_type_trajet_new') }}">Créer un nouveau</a>
+    <a href="{{ path('app_type_trajet_new') }}">Create new</a>
 {% endblock %}
 
  {% block metier %}
- <h3>Trajet Simple : {{simpleTrajetsCount}}</h3>
- <h3>Trajet Composé : {{composeTrajetsCount}}</h3>
+ <h3>nb simple trajet : {{simpleTrajetsCount}}</h3>
+ <h3>nb compose trajet : {{composeTrajetsCount}}</h3>
 
   <canvas id="myChart" width="400" height="400"></canvas>
 

@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+{{ parent() }}
+<style>
+    .grid-form{
+        display: grid;
+        grid-template-columns: repeat(2, 150px);
+        margin-bottom: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script>
+    pageSetup();
+
+    function pageSetup(){
+        $(document).ready(() => {
+            login();
+        });
+    }
+
+    function login(){
+        document.getElementById("login-btn").addEventListener("click", () => {
+            if(document.getElementById("e-captcha") != null){
+				document.getElementById("e-captcha").remove();
+			}
+            if(verifyCaptcha()){
+                $.ajax({
+                    type: 'POST',
+                    url: "/log-in/form",
+                    data:{
+                        "login-submit" : "123",
+                        "email": document.getElementById("f-email").value,
+                        "password": document.getElementById("f-pw").value,
+                    },
+                    success: function(result) {
+                        window.location.href = result;
+                        console.log(result);
+                    },
+                    error: function(result) {
+                        console.log("error");
+                    }
+                })
+            } else {
+                let error = document.createElement("div");
+                let tmp_id = "e-captcha";
+                error.setAttribute("id", tmp_id);
+                error.innerText = "Captcha is wrong!"
+                error.style.color = "red";
+                document.getElementById("field-s").appendChild(error);
+            }
+            
+        });
+    }
+
+    function verifyCaptcha(){
+		return (document.getElementById("captcha").value == "{{ captcha_code }}");
+	}
+</script>
+{% endblock %}
+
+{% block body %}
+<form method="POST" style="display:felx; flex-direction:column; margin-top: 150px; margin-left: 160px;">
+    <div class="grid-form">
+        <label>Email</label>
+        <input type="text" name="email" id="f-email">
+    </div>
+    <div class="grid-form">
+        <label>Password</label>
+        <input type="password" name="pass" id="f-pw">
+    </div>
+    <div class="grid-form">
+        <label>Captcha</label>
+        <div id="field-s">
+            <img src="{{ asset(captcha_image) }}" style="height: 100px; width: 200px;">
+            <input type="text" name="captcha" id="captcha">
+        </div>
+        
+    </div>
+    <div class="btn" style="color: #0d6efd; margin-left: 150px;" id="login-btn">Login</div>
+    
+</form>
+{% endblock %}

@@ -1,0 +1,192 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+{{ parent() }}
+<style>
+    .grid-form{
+        display: grid;
+        grid-template-columns: repeat(2, 150px);
+        margin-bottom: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script>
+    let current_data = new Array();
+    pageSetup();
+    function pageSetup(){
+        $(document).ready(() => {
+            document.getElementById("sub-btn").addEventListener("click", () => { //event listener = signal anticipator
+                if(checkUser()){
+                    for(let k = 0; k < current_data.length; k++){
+                        console.log(current_data[k]);
+                    }
+                    addUser();
+                }
+            });
+        });
+    }
+
+        function addUser(){
+            //ajax = communcation with server
+            $.ajax({
+                type: 'POST',
+                url: "/sign-up/form",
+                data:{
+                    "sign-up" : "123", //information "sign-up"
+                    "name": current_data[0],
+                    "lname": current_data[1],
+                    "email": current_data[2],
+                    "password": current_data[3],
+                    "gender": current_data[4],
+                    "role": current_data[5],
+                    "phone": current_data[6],
+                    "birthday": current_data[7]
+                },
+                success: function(result) {
+                    window.location.href = "/";
+                    console.log("aaaaaaaaa");
+                },
+                error: function(result) {
+                    console.log(result);
+                }
+            })
+        }
+
+        function checkUser(){
+            current_data = []
+            let test = true;
+            let i = 0;
+            document.getElementsByName("ff").forEach((e) => { 
+                if(document.getElementById("e" + i) != null){ 
+                    document.getElementById("e" + i).remove(); //remove previous error divs
+                }
+                current_data.push(e.value);
+                if(e.value){ //if e.value exists
+                    switch(true){
+                        case ((i == 0)||(i == 1)):
+                            if(!onlyLetters(e.value)){
+                                let error = document.createElement("div");
+                                let tmp_id = "e" + i;
+                                error.setAttribute("id", tmp_id);
+                                error.innerText = "Name must contain only letters!"
+                                error.style.color = "red";
+                                e.parentElement.appendChild(error);
+                                test = false;
+                            }
+                            break;
+                        case (i == 2):
+                            if(!checkMail(e.value)){
+                                let error = document.createElement("div");
+                                let tmp_id = "e" + i;
+                                error.setAttribute("id", tmp_id);
+                                error.innerText = "Email must be valid!"
+                                error.style.color = "red";
+                                e.parentElement.appendChild(error);
+                                test = false;  
+                            }
+                            break;
+                        case (i == 3):
+                            if(checkLength(e.value)){
+                                let error = document.createElement("div");
+                                let tmp_id = "e" + i;
+                                error.setAttribute("id", tmp_id);
+                                error.innerText = "Password must be 8 characters long!"
+                                error.style.color = "red";
+                                e.parentElement.appendChild(error);
+                                test = false;  
+                            }
+                            break;
+                        case (i == 6):
+                            if(!onlyNumbers(e.value)){
+                                let error = document.createElement("div");
+                                let tmp_id = "e" + i;
+                                error.setAttribute("id", tmp_id);
+                                error.innerText = "Phone number must be composed of only digits!"
+                                error.style.color = "red";
+                                e.parentElement.appendChild(error); //add child at the end of parent
+                                test = false;   
+                            }
+                            break;
+                    }
+                } else {
+                    if (((i >= 0)&&(i <= 3))||(i == 6)){
+                        let error = document.createElement("div");
+                        let tmp_id = "e" + i;
+                        error.setAttribute("id", tmp_id);
+                        error.innerText = "Field must not be empty!"
+                        error.style.color = "red";
+                        e.parentElement.appendChild(error);
+                        test = false;
+                    }
+                }
+                i = i + 1;
+            });
+            
+            return test;
+        }
+
+        function onlyLetters(str){
+            return /^[A-Za-z]*$/.test(str);
+        }
+
+        function onlyNumbers(str){
+            return /^[0-9]*$/.test(str);
+        }
+
+        function checkMail(str){
+            return ((str.endsWith("@esprit.tn"))||(str.endsWith("@coride.tn"))||(str.endsWith("@gmail.com")));
+        }
+
+        function checkLength(str, l){
+            return (str.length >= l);
+        }
+</script>
+
+{% endblock %}
+
+{% block body %}
+<form method="POST" style="display:felx; flex-direction:column; margin-top: 110px; margin-left: 160px;" id="su-form">
+    <div class="grid-form">
+        <label>Name</label>
+        <input type="text" id="f-name" name="ff">
+    </div>
+    <div class="grid-form">
+        <label>Last Name</label>
+        <input type="text" id="f-lname" name="ff">
+    </div>
+    <div class="grid-form">
+        <label>Email</label>
+        <input type="text" id="f-email" name="ff">
+    </div>
+    <div class="grid-form">
+        <label>Password</label>
+        <input type="password" id="f-pw" name="ff">
+    </div>
+    <div class="grid-form">
+        <label>Gender</label>
+        <select id="gen-cb" name="ff">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+    </div>
+    <div class="grid-form">
+        <label>Role</label>
+        <select id="role-cb" name="ff">
+            <option value="ROLE_DRIVER">Driver</option>
+            <option value="ROLE_PASSENGER">Passenger</option>
+        </select>
+    </div>
+    <div class="grid-form">
+        <label>Phone</label>
+        <input type="text" id="f-tel" name="ff">
+    </div>
+    <div class="grid-form">
+        <label>Birthday</label>
+        <input type="date" id="f-birthday" name="ff">
+    </div>
+</form>
+<div class="btn" id="sub-btn" style="color: #0d6efd; margin-left: 150px;"><b>Sign-Up</b></div>
+{% endblock %}

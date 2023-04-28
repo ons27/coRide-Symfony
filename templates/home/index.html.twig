@@ -1,959 +1,375 @@
 {% extends 'base.html.twig' %}
+{#
+{% block title %}HomeController{% endblock %}
 
 {% block body %}
-	<!DOCTYPE html>
-	<html lang="en">
-
-		<body>
-			<!-- ======= Hero Section ======= -->
-			<section id="hero">
-
-				<div class="container">
-					<div class="row justify-content-between">
-						<div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
-							<div data-aos="zoom-out">
-								<h1>Bienvenue sur 
-									<span>CoRide</span>
-								</h1>
-								<h2>Avec CoRide, vous pouvez voyager en toute sécurité, confort et convivialité.</h2>
-								<div class="text-center text-lg-start">
-									<a href="#about" class="btn-get-started scrollto">Commencer</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
-							<img src="assets/img/hero-img.png" class="img-fluid animated" alt="">
-						</div>
-					</div>
-				</div>
-
-				<svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 24 150 28 " preserveaspectratio="none">
-					<defs>
-						<path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></defs>
-						<g class="wave1">
-							<use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)"></g>
-							<g class="wave2">
-								<use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)"></g>
-								<g class="wave3">
-									<use xlink:href="#wave-path" x="50" y="9" fill="#fff"></g>
-								</svg>
-
-							</section>
-							<!-- End Hero -->
-
-							<main
-								id="main">
-
-								<!-- ======= About Section ======= -->
-								<section id="about" class="about">
-									<div class="container-fluid">
-
-										<div class="row">
-											<div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch" data-aos="fade-right">
-												<a href="https://www.youtube.com/watch?v=StpBR2W8G5A" class="glightbox play-btn mb-4"></a>
-											</div>
-
-											<div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5" data-aos="fade-left">
-												<h3>CoRide est un site de covoiturage tunisien qui permet aux utilisateurs de partager leur trajet avec d'autres passagers pour économiser de l'argent et réduire leur impact sur l'environnement.
-												</h3>
-												<p>Notre plateforme permet aux conducteurs de proposer des trajets pour lesquels ils ont de la place disponible, et aux passagers de réserver leur place à l'avance. Nous nous engageons à offrir un service de qualité, en veillant à la sécurité et au confort de nos utilisateurs.</p>
-
-												<div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
-													<div class="icon">
-														<i class="bx bx-fingerprint"></i>
-													</div>
-													<h4 class="title">
-														<a href="">Covoiturage régulier</a>
-													</h4>
-													<p class="description">Permet aux utilisateurs de planifier et de réserver des trajets réguliers avec d'autres utilisateurs du site, ce qui leur permet de réduire considérablement leurs coûts de transport tout en créant des liens sociaux avec des personnes partageant les mêmes idées.</p>
-												</div>
-
-												<div class="icon-box" data-aos="zoom-in" data-aos-delay="200">
-													<div class="icon">
-														<i class="bx bx-gift"></i>
-													</div>
-													<h4 class="title">
-														<a href="">Système de réservation en ligne</a>
-													</h4>
-													<p class="description">Facilite la réservation de trajets pour les utilisateurs en leur permettant de rechercher des trajets disponibles, de sélectionner un conducteur et de réserver leur place en ligne. Cela permet de gagner du temps et de garantir une place dans la voiture.</p>
-												</div>
-
-												<div class="icon-box" data-aos="zoom-in" data-aos-delay="300">
-													<div class="icon">
-														<i class="bx bx-atom"></i>
-													</div>
-													<h4 class="title">
-														<a href="">Évaluation des conducteurs/ passagers</a>
-													</h4>
-													<p class="description">Permet aux utilisateurs de noter et de donner des commentaires sur les conducteurs et les passagers avec lesquels ils ont voyagé. Cela permet de maintenir un niveau de qualité élevé et de renforcer la confiance entre les utilisateurs.</p>
-												</div>
-
-											</div>
-										</div>
-
-									</div>
-								</section>
-								<!-- End About Section -->
-
-								<!-- ======= Features Section ======= -->
-								<section id="features" class="features">
-									<div class="container">
-
-										<div class="section-title" data-aos="fade-up">
-											<h2>Caractéristiques</h2>
-											<p>Vérifiez les fonctionnalités</p>
-										</div>
-
-										<div class="row" data-aos="fade-left">
-											<div class="col-lg-3 col-md-4">
-												<div class="icon-box" data-aos="zoom-in" data-aos-delay="50">
-													<i class="ri-store-line" style="color: #ffbb2c;"></i>
-													<h3>
-														<a href="">Recherche de trajet</a>
-													</h3>
-												</div>
-											</div>
-											<div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-												<div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
-													<i class="ri-bar-chart-box-line" style="color: #5578ff;"></i>
-													<h3>
-														<a href="">Covoiturage régulier</a>
-													</h3>
-												</div>
-											</div>
-											<div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-												<div class="icon-box" data-aos="zoom-in" data-aos-delay="150">
-													<i class="ri-calendar-todo-line" style="color: #e80368;"></i>
-													<h3>
-														<a href="">Système de réservation en ligne</a>
-													</h3>
-												</div>
-											</div>
-											<div class="col-lg-3 col-md-4 mt-4 mt-lg-0">
-												<div class="icon-box" data-aos="zoom-in" data-aos-delay="200">
-													<i class="ri-paint-brush-line" style="color: #e361ff;"></i>
-													<h3>
-														<a href="">Messagerie interne</a>
-													</h3>
-												</div>
-											</div>
-											<div class="col-lg-3 col-md-4 mt-4">
-												<div class="icon-box" data-aos="zoom-in" data-aos-delay="250">
-													<i class="ri-database-2-line" style="color: #47aeff;"></i>
-													<h3>
-														<a href="">Paiement en ligne sécurisé</a>
-													</h3>
-												</div>
-											</div>
-											<div class="col-lg-3 col-md-4 mt-4">
-												<div class="icon-box" data-aos="zoom-in" data-aos-delay="300">
-													<i class="ri-gradienter-line" style="color: #ffa76e;"></i>
-													<h3>
-														<a href="">Profil de conducteur/ passager</a>
-													</h3>
-												</div>
-											</div>
-											<div class="col-lg-3 col-md-4 mt-4">
-												<div class="icon-box" data-aos="zoom-in" data-aos-delay="350">
-													<i class="ri-file-list-3-line" style="color: #11dbcf;"></i>
-													<h3>
-														<a href="">Évaluation des conducteurs/ passagers</a>
-													</h3>
-												</div>
-											</div>
-											<div class="col-lg-3 col-md-4 mt-4">
-												<div class="icon-box" data-aos="zoom-in" data-aos-delay="400">
-													<i class="ri-price-tag-2-line" style="color: #4233ff;"></i>
-													<h3>
-														<a href="">Gestion de liste noire</a>
-													</h3>
-												</div>
-											</div>
-											<div class="col-lg-3 col-md-4 mt-4">
-												<div class="icon-box" data-aos="zoom-in" data-aos-delay="450">
-													<i class="ri-anchor-line" style="color: #b2904f;"></i>
-													<h3>
-														<a href="">Notifications par email et SMS</a>
-													</h3>
-												</div>
-											</div>
-											<div class="col-lg-3 col-md-4 mt-4">
-												<div class="icon-box" data-aos="zoom-in" data-aos-delay="500">
-													<i class="ri-disc-line" style="color: #b20969;"></i>
-													<h3>
-														<a href="">Intégration avec les réseaux sociaux</a>
-													</h3>
-												</div>
-											</div>
-											<div class="col-lg-3 col-md-4 mt-4">
-												<div class="icon-box" data-aos="zoom-in" data-aos-delay="550">
-													<i class="ri-base-station-line" style="color: #ff5828;"></i>
-													<h3>
-														<a href="">Assistance client 24/7</a>
-													</h3>
-												</div>
-											</div>
-											<div class="col-lg-3 col-md-4 mt-4">
-												<div class="icon-box" data-aos="zoom-in" data-aos-delay="600">
-													<i class="ri-fingerprint-line" style="color: #29cc61;"></i>
-													<h3>
-														<a href="">Calculateur de coûts de trajet</a>
-													</h3>
-												</div>
-											</div>
-										</div>
-
-									</div>
-								</section>
-								<!-- End Features Section -->
-
-								<!-- ======= Counts Section ======= -->
-								<section id="counts" class="counts">
-									<div class="container">
-
-										<div class="row" data-aos="fade-up">
-
-											<div class="col-lg-3 col-md-6">
-												<div class="count-box">
-													<i class="bi bi-emoji-smile"></i>
-													<span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-													<p>Clients heureux</p>
-												</div>
-											</div>
-
-											<div class="col-lg-3 col-md-6 mt-5 mt-md-0">
-												<div class="count-box">
-													<i class="bi bi-journal-richtext"></i>
-													<span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-													<p>Projets</p>
-												</div>
-											</div>
-
-											<div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
-												<div class="count-box">
-													<i class="bi bi-headset"></i>
-													<span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
-													<p>Heures d'assistance</p>
-												</div>
-											</div>
-
-											<div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
-												<div class="count-box">
-													<i class="bi bi-people"></i>
-													<span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-													<p>Travailleurs acharnés</p>
-												</div>
-											</div>
-
-										</div>
-
-									</div>
-								</section>
-								<!-- End Counts Section -->
-
-								<!-- ======= Details Section ======= -->
-								<section id="details" class="details">
-									<div class="container">
-
-										<div class="row content">
-											<div class="col-md-4" data-aos="fade-right">
-												<img src="assets/img/details-1.png" class="img-fluid" alt="">
-											</div>
-											<div class="col-md-8 pt-4" data-aos="fade-up">
-												<h3>Réservation de trajets.</h3>
-												<p class="fst-italic">
-													Cette fonctionnalité permet aux utilisateurs de réserver des trajets en covoiturage à l'avance ou en temps réel.
-												</p>
-												<ul>
-													<li>
-														<i class="bi bi-check"></i>
-														Recherche de trajets disponibles en fonction de la destination, de la date et de l'heure.</li>
-													<li>
-														<i class="bi bi-check"></i>
-														Possibilité de réserver des trajets aller-retour.</li>
-													<li>
-														<i class="bi bi-check"></i>
-														Affichage des détails du trajet et des informations sur le conducteur et les passagers.</li>
-													<li>
-														<i class="bi bi-check"></i>
-														Confirmation instantanée de la réservation et envoi de notifications par e-mail ou SMS.</li>
-												</ul>
-
-											</div>
-										</div>
-
-										<div class="row content">
-											<div class="col-md-4 order-1 order-md-2" data-aos="fade-left">
-												<img src="assets/img/details-2.png" class="img-fluid" alt="">
-											</div>
-											<div class="col-md-8 pt-5 order-2 order-md-1" data-aos="fade-up">
-												<h3>Système de notation et commentaires</h3>
-												<p class="fst-italic">
-													Cette fonctionnalité permet aux utilisateurs de noter et de laisser des commentaires sur les conducteurs et les passagers.
-												</p>
-												<p>
-													Système de notation en étoiles pour évaluer la qualité de l'expérience de covoiturage.
-												  Possibilité de laisser des commentaires sur l'état du véhicule, la ponctualité, la politesse, etc.
-                        </p>
-												<p>
-													Affichage des notes et commentaires pour chaque utilisateur, permettant aux autres de prendre des décisions éclairées avant de réserver un trajet.
-												</p>
-											</div>
-										</div>
-
-										<div class="row content">
-											<div class="col-md-4" data-aos="fade-right">
-												<img src="assets/img/details-3.png" class="img-fluid" alt="">
-											</div>
-											<div class="col-md-8 pt-5" data-aos="fade-up">
-												<h3>Gestion de comptes utilisateur</h3>
-												<p>Cette fonctionnalité permet aux utilisateurs de gérer leur profil et leurs préférences de covoiturage.</p>
-												<ul>
-													<li>
-														<i class="bi bi-check"></i>
-														Création de profil utilisateur avec des informations de base telles que le nom, l'adresse e-mail, le numéro de téléphone, etc.</li>
-													<li>
-														<i class="bi bi-check"></i>
-														Ajout et modification des préférences de covoiturage, telles que les destinations préférées, les heures de départ et les jours de la semaine.</li>
-													<li>
-														<i class="bi bi-check"></i>
-														Possibilité de visualiser et de gérer l'historique des réservations et des trajets effectués.</li>
-												</ul>
-												
-											</div>
-										</div>
-
-										<div class="row content">
-											<div class="col-md-4 order-1 order-md-2" data-aos="fade-left">
-												<img src="assets/img/details-4.png" class="img-fluid" alt="">
-											</div>
-											<div class="col-md-8 pt-5 order-2 order-md-1" data-aos="fade-up">
-												<h3>Service client </h3>
-												<p class="fst-italic">
-													Cette fonctionnalité permet aux utilisateurs de contacter facilement le service client en cas de problème ou de question.
-												</p>
-												
-												<ul>
-													<li>
-														<i class="bi bi-check"></i>
-														Assistance en direct via un chat en ligne pour les problèmes urgents.</li>
-													<li>
-														<i class="bi bi-check"></i>
-														Formulaire de contact en ligne pour les questions générales.</li>
-													<li>
-														<i class="bi bi-check"></i>
-														FAQ détaillée pour répondre aux questions courantes et fournir des informations supplémentaires.</li>
-												</ul>
-											</div>
-										</div>
-
-									</div>
-								</section>
-								<!-- End Details Section -->
-
-								<!-- ======= Gallery Section ======= -->
-								<section id="gallery" class="gallery">
-									<div class="container">
-
-										<div class="section-title" data-aos="fade-up">
-											<h2>Galerie</h2>
-											<p>Consultez notre galerie</p>
-										</div>
-
-										<div class="row g-0" data-aos="fade-left">
-
-											<div class="col-lg-3 col-md-4">
-												<div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
-													<a href="assets/img/gallery/gallery-1.jpg" class="gallery-lightbox">
-														<img src="assets/img/gallery/gallery-1.jpg" alt="" class="img-fluid">
-													</a>
-												</div>
-											</div>
-
-											<div class="col-lg-3 col-md-4">
-												<div class="gallery-item" data-aos="zoom-in" data-aos-delay="150">
-													<a href="assets/img/gallery/gallery-2.jpg" class="gallery-lightbox">
-														<img src="assets/img/gallery/gallery-2.jpg" alt="" class="img-fluid">
-													</a>
-												</div>
-											</div>
-
-											<div class="col-lg-3 col-md-4">
-												<div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">
-													<a href="assets/img/gallery/gallery-3.jpg" class="gallery-lightbox">
-														<img src="assets/img/gallery/gallery-3.jpg" alt="" class="img-fluid">
-													</a>
-												</div>
-											</div>
-
-											<div class="col-lg-3 col-md-4">
-												<div class="gallery-item" data-aos="zoom-in" data-aos-delay="250">
-													<a href="assets/img/gallery/gallery-4.jpg" class="gallery-lightbox">
-														<img src="assets/img/gallery/gallery-4.jpg" alt="" class="img-fluid">
-													</a>
-												</div>
-											</div>
-
-											<div class="col-lg-3 col-md-4">
-												<div class="gallery-item" data-aos="zoom-in" data-aos-delay="300">
-													<a href="assets/img/gallery/gallery-5.jpg" class="gallery-lightbox">
-														<img src="assets/img/gallery/gallery-5.jpg" alt="" class="img-fluid">
-													</a>
-												</div>
-											</div>
-
-											<div class="col-lg-3 col-md-4">
-												<div class="gallery-item" data-aos="zoom-in" data-aos-delay="350">
-													<a href="assets/img/gallery/gallery-6.jpg" class="gallery-lightbox">
-														<img src="assets/img/gallery/gallery-6.jpg" alt="" class="img-fluid">
-													</a>
-												</div>
-											</div>
-
-											<div class="col-lg-3 col-md-4">
-												<div class="gallery-item" data-aos="zoom-in" data-aos-delay="400">
-													<a href="assets/img/gallery/gallery-7.jpg" class="gallery-lightbox">
-														<img src="assets/img/gallery/gallery-7.jpg" alt="" class="img-fluid">
-													</a>
-												</div>
-											</div>
-
-											<div class="col-lg-3 col-md-4">
-												<div class="gallery-item" data-aos="zoom-in" data-aos-delay="450">
-													<a href="assets/img/gallery/gallery-8.jpg" class="gallery-lightbox">
-														<img src="assets/img/gallery/gallery-8.jpg" alt="" class="img-fluid">
-													</a>
-												</div>
-											</div>
-
-										</div>
-
-									</div>
-								</section>
-								<!-- End Gallery Section -->
-
-								<!-- ======= Testimonials Section ======= -->
-								<section id="testimonials" class="testimonials">
-									<div class="container">
-
-										<div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-											<div class="swiper-wrapper">
-
-												<div class="swiper-slide">
-													<div class="testimonial-item">
-														<img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-														<h3>Saif Yahyaoui</h3>
-														<h4>Ceo &amp; Founder</h4>
-														<p>
-															<i class="bx bxs-quote-alt-left quote-icon-left"></i>
-															"J'ai utilisé Coride pour la première fois hier et je suis très satisfait de l'expérience ! J'ai pu trouver un covoiturage facilement et rapidement, et le trajet s'est déroulé sans problème. Le conducteur était sympathique et j'ai pu économiser de l'argent par rapport à un trajet en taxi ou en transport en commun. Je recommande vivement Coride !"
-															<i class="bx bxs-quote-alt-right quote-icon-right"></i>
-														</p>
-													</div>
-												</div>
-												<!-- End testimonial item -->
-
-												<div class="swiper-slide">
-													<div class="testimonial-item">
-														<img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-														<h3>Sirine Ben Younes</h3>
-														<h4>Designer</h4>
-														<p>
-															<i class="bx bxs-quote-alt-left quote-icon-left"></i>
-															"Je suis un utilisateur régulier de Coride depuis plusieurs mois maintenant et je suis toujours impressionné par la qualité du service. Les conducteurs sont fiables, les prix sont raisonnables et je suis en mesure de me déplacer facilement dans la ville sans avoir à conduire moi-même. Je recommande Coride à tous ceux qui cherchent un moyen pratique et abordable de se déplacer."
-															<i class="bx bxs-quote-alt-right quote-icon-right"></i>
-														</p>
-													</div>
-												</div>
-												<!-- End testimonial item -->
-
-												<div class="swiper-slide">
-													<div class="testimonial-item">
-														<img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-														<h3>Ons Bouhjar</h3>
-														<h4>Store Owner</h4>
-														<p>
-															<i class="bx bxs-quote-alt-left quote-icon-left"></i>
-															"Je suis tombé sur Coride par hasard et je suis heureux de l'avoir fait ! J'ai pu trouver un covoiturage pour un trajet assez long et j'ai été agréablement surpris par le professionnalisme du conducteur et la commodité du service. Je recommande Coride à tous ceux qui cherchent une alternative pratique et économique au transport traditionnel."
-															<i class="bx bxs-quote-alt-right quote-icon-right"></i>
-														</p>
-													</div>
-												</div>
-												<!-- End testimonial item -->
-
-												<div class="swiper-slide">
-													<div class="testimonial-item">
-														<img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-														<h3>Med Amin Kbaier</h3>
-														<h4>Freelancer</h4>
-														<p>
-															<i class="bx bxs-quote-alt-left quote-icon-left"></i>
-															"Coride est un excellent service ! J'ai utilisé ce site pour trouver un covoiturage pour un événement spécial et je n'aurais pas pu être plus satisfait. Le conducteur était sympathique et professionnel, et j'ai été en mesure de me rendre à l'événement à temps et en toute sécurité. Je recommande Coride à tous ceux qui cherchent un moyen pratique et fiable de se déplacer."
-															<i class="bx bxs-quote-alt-right quote-icon-right"></i>
-														</p>
-													</div>
-												</div>
-												<!-- End testimonial item -->
-
-												<div class="swiper-slide">
-													<div class="testimonial-item">
-														<img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-														<h3>Skander Damergi</h3>
-														<h4>Entrepreneur</h4>
-														<p>
-															<i class="bx bxs-quote-alt-left quote-icon-left"></i>
-															"Je suis très heureux d'avoir découvert Coride ! J'ai pu trouver un covoiturage pour me rendre à une entrevue d'emploi et j'ai été impressionné par le service. Le conducteur était ponctuel et professionnel, et j'ai été en mesure de me concentrer sur ma préparation à l'entrevue plutôt que sur la conduite. Je recommande fortement Coride à tous ceux qui cherchent un moyen pratique et abordable de se déplacer."
-															<i class="bx bxs-quote-alt-right quote-icon-right"></i>
-														</p>
-													</div>
-												</div>
-												<!-- End testimonial item -->
-
-											</div>
-											<div class="swiper-pagination"></div>
-										</div>
-
-									</div>
-								</section>
-								<!-- End Testimonials Section -->
-
-								<!-- ======= Team Section ======= -->
-								<section id="team" class="team">
-									<div class="container">
-
-										<div class="section-title" data-aos="fade-up">
-											<h2>Équipe</h2>
-											<p>Notre grande équipe</p>
-										</div>
-
-										<div class="row" data-aos="fade-left">
-
-											<div class="col-lg-3 col-md-6">
-												<div class="member" data-aos="zoom-in" data-aos-delay="100">
-													<div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
-													<div class="member-info">
-														<h4>Saif Yahyaoui</h4>
-														<span>Développeur</span>
-														<div class="social">
-															<a href="">
-																<i class="bi bi-twitter"></i>
-															</a>
-															<a href="">
-																<i class="bi bi-facebook"></i>
-															</a>
-															<a href="">
-																<i class="bi bi-instagram"></i>
-															</a>
-															<a href="">
-																<i class="bi bi-linkedin"></i>
-															</a>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<div class="col-lg-3 col-md-6 mt-5 mt-md-0">
-												<div class="member" data-aos="zoom-in" data-aos-delay="200">
-													<div class="pic"><img src="assets/img/team/team-2.jpg" class="img-fluid" alt=""></div>
-													<div class="member-info">
-														<h4>Sirine Ben Younes</h4>
-														<span>Développeur</span>
-														<div class="social">
-															<a href="">
-																<i class="bi bi-twitter"></i>
-															</a>
-															<a href="">
-																<i class="bi bi-facebook"></i>
-															</a>
-															<a href="">
-																<i class="bi bi-instagram"></i>
-															</a>
-															<a href="">
-																<i class="bi bi-linkedin"></i>
-															</a>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
-												<div class="member" data-aos="zoom-in" data-aos-delay="300">
-													<div class="pic"><img src="assets/img/team/team-3.jpg" class="img-fluid" alt=""></div>
-													<div class="member-info">
-														<h4>Ons Bouhjar</h4>
-														<span>Développeur</span>
-														<div class="social">
-															<a href="">
-																<i class="bi bi-twitter"></i>
-															</a>
-															<a href="">
-																<i class="bi bi-facebook"></i>
-															</a>
-															<a href="">
-																<i class="bi bi-instagram"></i>
-															</a>
-															<a href="">
-																<i class="bi bi-linkedin"></i>
-															</a>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
-												<div class="member" data-aos="zoom-in" data-aos-delay="400">
-													<div class="pic"><img src="assets/img/team/team-4.jpg" class="img-fluid" alt=""></div>
-													<div class="member-info">
-														<h4>Med Amin Kbaier</h4>
-														<span>Développeur</span>
-														<div class="social">
-															<a href="">
-																<i class="bi bi-twitter"></i>
-															</a>
-															<a href="">
-																<i class="bi bi-facebook"></i>
-															</a>
-															<a href="">
-																<i class="bi bi-instagram"></i>
-															</a>
-															<a href="">
-																<i class="bi bi-linkedin"></i>
-															</a>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
-												<div class="member" data-aos="zoom-in" data-aos-delay="500">
-													<div class="pic"><img src="assets/img/team/team-5.jpg" class="img-fluid" alt=""></div>
-													<div class="member-info">
-														<h4>Med Amin Grimene</h4>
-														<span>Développeur</span>
-														<div class="social">
-															<a href="">
-																<i class="bi bi-twitter"></i>
-															</a>
-															<a href="">
-																<i class="bi bi-facebook"></i>
-															</a>
-															<a href="">
-																<i class="bi bi-instagram"></i>
-															</a>
-															<a href="">
-																<i class="bi bi-linkedin"></i>
-															</a>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
-												<div class="member" data-aos="zoom-in" data-aos-delay="600">
-													<div class="pic"><img src="assets/img/team/team-6.jpg" class="img-fluid" alt=""></div>
-													<div class="member-info">
-														<h4>Skander Damergi</h4>
-														<span>Développeur</span>
-														<div class="social">
-															<a href="">
-																<i class="bi bi-twitter"></i>
-															</a>
-															<a href="">
-																<i class="bi bi-facebook"></i>
-															</a>
-															<a href="">
-																<i class="bi bi-instagram"></i>
-															</a>
-															<a href="">
-																<i class="bi bi-linkedin"></i>
-															</a>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
-												<div class="member" data-aos="zoom-in" data-aos-delay="700">
-													<div class="pic"><img src="assets/img/team/team-7.jpg" class="img-fluid" alt=""></div>
-													<div class="member-info">
-														<h4>Oussama Jaouadi</h4>
-														<span>Développeur</span>
-														<div class="social">
-															<a href="">
-																<i class="bi bi-twitter"></i>
-															</a>
-															<a href="">
-																<i class="bi bi-facebook"></i>
-															</a>
-															<a href="">
-																<i class="bi bi-instagram"></i>
-															</a>
-															<a href="">
-																<i class="bi bi-linkedin"></i>
-															</a>
-														</div>
-													</div>
-												</div>
-											</div>
-
-										</div>
-
-									</div>
-								</section>
-								<!-- End Team Section -->
-
-								<!-- ======= Pricing Section ======= -->
-								<section id="pricing" class="pricing">
-									<div class="container">
-
-										<div class="section-title" data-aos="fade-up">
-											<h2>Tarification</h2>
-											<p>Vérifiez nos prix</p>
-										</div>
-
-										<div class="row" data-aos="fade-left">
-
-											<div class="col-lg-3 col-md-6">
-												<div class="box" data-aos="zoom-in" data-aos-delay="100">
-													<h3>Gratuit</h3>
-													<h4>
-														<sup>$</sup>0<span>
-															/ mois</span>
-													</h4>
-													<ul>
-														<li>Web Design</li>
-														<li>Web Development</li>
-														<li class="na">Product Management</li>
-														<li class="na">Marketing</li>
-														<li class="na">Graphic Design</li>
-													</ul>
-													<div class="btn-wrap">
-														<a href="#" class="btn-buy">Acheter maintenant</a>
-													</div>
-												</div>
-											</div>
-
-											<div class="col-lg-3 col-md-6 mt-4 mt-md-0">
-												<div class="box featured" data-aos="zoom-in" data-aos-delay="200">
-													<h3>Entreprise</h3>
-													<h4>
-														<sup>$</sup>19<span>
-															/ mois</span>
-													</h4>
-													<ul>
-														<li>Web Design</li>
-														<li>Web Development</li>
-														<li>Product Management</li>
-														<li class="na">Marketing</li>
-														<li class="na">Graphic Design</li>
-													</ul>
-													<div class="btn-wrap">
-														<a href="#" class="btn-buy">Acheter maintenant</a>
-													</div>
-												</div>
-											</div>
-
-											<div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
-												<div class="box" data-aos="zoom-in" data-aos-delay="300">
-													<h3>Développeur</h3>
-													<h4>
-														<sup>$</sup>29<span>
-															/ mois</span>
-													</h4>
-													<ul>
-														<li>Web Design</li>
-														<li>Web Development</li>
-														<li>Product Management</li>
-														<li>Marketing</li>
-														<li class="na">Graphic Design</li>
-													</ul>
-													<div class="btn-wrap">
-														<a href="#" class="btn-buy">Acheter maintenant</a>
-													</div>
-												</div>
-											</div>
-
-											<div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
-												<div class="box" data-aos="zoom-in" data-aos-delay="400">
-													<span class="advanced">Avancé</span>
-													<h3>Ultimate</h3>
-													<h4>
-														<sup>$</sup>49<span>
-															/ mois</span>
-													</h4>
-													<ul>
-														<li>Web Design</li>
-														<li>Web Development</li>
-														<li>Product Management</li>
-														<li>Marketing</li>
-														<li>Graphic Design</li>
-													</ul>
-													<div class="btn-wrap">
-														<a href="#" class="btn-buy">Acheter maintenant</a>
-
-													</div>
-												</div>
-											</div>
-
-										</div>
-
-									</div>
-								</section>
-								<!-- End Pricing Section -->
-
-								<!-- ======= F.A.Q Section ======= -->
-								<section id="faq" class="faq section-bg">
-									<div class="container">
-
-										<div class="section-title" data-aos="fade-up">
-											<h2>Q.F.P</h2>
-											<p>Questions Fréquemment Posées</p>
-										</div>
-
-										<div class="faq-list">
-											<ul>
-												<li data-aos="fade-up">
-													<i class="bx bx-help-circle icon-help"></i>
-													<a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">Comment fonctionne CoRide ?<i class="bx bx-chevron-down icon-show"></i>
-														<i class="bx bx-chevron-up icon-close"></i>
-													</a>
-													<div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
-														<p>
-															CoRide est un site de covoiturage qui permet aux conducteurs de proposer des trajets pour lesquels ils ont de la place disponible, et aux passagers de réserver leur place à l'avance. Les utilisateurs peuvent rechercher des trajets disponibles en fonction de leur emplacement et de leur destination, puis réserver leur place en ligne. Une fois la réservation effectuée, les conducteurs et les passagers peuvent communiquer pour coordonner les détails du trajet.
-														</p>
-													</div>
-												</li>
-
-												<li data-aos="fade-up" data-aos-delay="100">
-													<i class="bx bx-help-circle icon-help"></i>
-													<a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">Comment savoir si un conducteur est fiable ?<i class="bx bx-chevron-down icon-show"></i>
-														<i class="bx bx-chevron-up icon-close"></i>
-													</a>
-													<div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
-														<p>
-															Nous avons mis en place un système de vérification des identités pour garantir que seules des personnes fiables peuvent utiliser notre service. De plus, notre fonctionnalité de notation et de commentaires permet aux utilisateurs d'évaluer leur expérience avec les conducteurs et de donner leur avis sur leur fiabilité. Nous encourageons également les conducteurs à compléter leur profil avec des informations détaillées sur leur expérience de conduite et leur véhicule.
-														</p>
-													</div>
-												</li>
-
-												<li data-aos="fade-up" data-aos-delay="200">
-													<i class="bx bx-help-circle icon-help"></i>
-													<a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">
-														Comment fonctionne le paiement sur CoRide ?
-														<i class="bx bx-chevron-down icon-show"></i>
-														<i class="bx bx-chevron-up icon-close"></i>
-													</a>
-													<div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
-														<p>
-															Nous proposons un système de paiement en ligne sécurisé pour permettre aux utilisateurs de payer leur part du coût du trajet. Les utilisateurs peuvent ajouter une carte de crédit ou de débit à leur compte CoRide et effectuer des paiements en ligne. Les conducteurs reçoivent le paiement de leur part de la réservation après le trajet, une fois que la course a été effectuée.
-														</p>
-													</div>
-												</li>
-
-												<li data-aos="fade-up" data-aos-delay="300">
-													<i class="bx bx-help-circle icon-help"></i>
-													<a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">Comment puis-je contacter un conducteur ou un passager avant le trajet ?<i class="bx bx-chevron-down icon-show"></i>
-														<i class="bx bx-chevron-up icon-close"></i>
-													</a>
-													<div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
-														<p>
-															Une fois que vous avez réservé un trajet sur CoRide, vous pouvez communiquer avec le conducteur ou les passagers via notre plateforme de messagerie interne. Vous pourrez ainsi discuter des détails du trajet, comme l'heure et le lieu de rendez-vous.
-														</p>
-													</div>
-												</li>
-
-												<li data-aos="fade-up" data-aos-delay="400">
-													<i class="bx bx-help-circle icon-help"></i>
-													<a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">Que se passe-t-il en cas d'annulation d'un trajet ?
-														<i class="bx bx-chevron-down icon-show"></i>
-														<i class="bx bx-chevron-up icon-close"></i>
-													</a>
-													<div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
-														<p>
-															En cas d'annulation d'un trajet, les utilisateurs peuvent recevoir un remboursement complet ou partiel, en fonction de la politique d'annulation du conducteur. Les conducteurs peuvent fixer leur propre politique d'annulation, que les passagers doivent accepter avant de réserver leur place.
-														</p>
-													</div>
-												</li>
-
-											</ul>
-										</div>
-
-									</div>
-								</section>
-								<!-- End F.A.Q Section -->
-
-								<!-- ======= Contact Section ======= -->
-								<section id="contact" class="contact">
-									<div class="container">
-
-										<div class="section-title" data-aos="fade-up">
-											<h2>Contacter</h2>
-											<p>Contactez-nous</p>
-										</div>
-
-										<div class="row">
-
-											<div class="col-lg-4" data-aos="fade-right" data-aos-delay="100">
-												<div class="info">
-													<div class="address">
-														<i class="bi bi-geo-alt"></i>
-														<h4>Emplacement:</h4>
-														<p>2083 - Pôle Technologique - El Ghazala. Zone industrielle</p>
-													</div>
-
-													<div class="email">
-														<i class="bi bi-envelope"></i>
-														<h4>Email:</h4>
-														<p>contact@coride.com</p>
-													</div>
-
-													<div class="phone">
-														<i class="bi bi-phone"></i>
-														<h4>Appel:</h4>
-														<p>+216 70 250 000</p>
-													</div>
-
-												</div>
-
-											</div>
-
-											<div class="col-lg-8 mt-5 mt-lg-0" data-aos="fade-left" data-aos-delay="200">
-
-												<form action="forms/contact.php" method="post" role="form" class="php-email-form">
-													<div class="row">
-														<div class="col-md-6 form-group">
-															<input type="text" name="name" class="form-control" id="name" placeholder="Votre Nom" required>
-														</div>
-														<div class="col-md-6 form-group mt-3 mt-md-0">
-															<input type="email" class="form-control" name="email" id="email" placeholder="Votre Email" required>
-														</div>
-													</div>
-													<div class="form-group mt-3">
-														<input type="text" class="form-control" name="subject" id="subject" placeholder="Sujet" required>
-													</div>
-													<div class="form-group mt-3">
-														<textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-													</div>
-													<div class="my-3">
-														<div class="loading">Chargement</div>
-														<div class="error-message"></div>
-														<div class="sent-message">Votre message a été envoyé. Merci!</div>
-													</div>
-													<div class="text-center">
-														<button type="submit">Envoyer le message</button>
-													</div>
-												</form>
-
-											</div>
-
-										</div>
-
-									</div>
-								</section>
-								<!-- End Contact Section -->
-
-							</main>
-							<!-- End #main -->
-
-						</body>
-
-					</html>
-
-				{% endblock %}
+    <h1>Hello {{ default }} from home page!</h1>
+    <h1>Hello {{ default }} from home page!</h1>
+    <h1>Hello {{ default }} from home page!</h1>
+    <h1>Hello {{ default }} from home page!</h1>
+    <h1>Hello {{ default }} from home page!</h1>
+    <h1>Hello {{ default }} from home page!</h1>
+    <h1>Hello {{ default }} from home page!</h1>
+    <h1>Hello {{ default }} from home page!</h1>
+    <h1>Hello {{ default }} from home page!</h1>
+   
+
+{% endblock %}
+#}
+
+{% block body %}
+
+<!-- - - - - - - - -  Hero Section - - - - - - - -  -->
+  <section id="hero" class="hero">
+    <div class="container position-relative">
+      <div class="row gy-5" data-aos="fade-in">
+        <div class="col-lg-12  order-lg-1 d-flex flex-column justify-content-center text-center caption">
+          <h2>Welcome to <span>Co</span><span class="circle">Ride.</span></h2>
+          <p>covoiturage tunisie....plus simple</p>
+        </div>
+      </div>
+    </div>
+
+<!--3boxes-->
+    <div class="icon-boxes position-relative">
+      <div class="container position-relative">
+        <div class="row gy-4 mt-5">
+
+          <!--Box 1-->
+          <div class="col-xl-4 col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-star-fill"></i></div>
+              <h4 class="title"><a href="" class="stretched-link">Professional Guaranteed</a></h4>
+            </div>
+          </div>
+          <!--End Icon Box -->
+          <!--Box 2-->
+          <div class="col-xl-4 col-md-4 card-two" data-aos="fade-up" data-aos-delay="200">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-card-heading"></i></div>
+              <h2 class="title"><a href="" class="stretched-link">24/7</a></h2>
+              <h4 class="title"><a href="" class="stretched-link">Varied Offer</a></h4>
+            </div>
+          </div>
+          <!--End Icon Box -->
+          <!--Box 3-->
+          <div class="col-xl-4 col-md-4" data-aos="fade-up" data-aos-delay="500">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-person-check"></i></div>
+              <h4 class="title"><a href="" class="stretched-link">Satisfaction Guranteed</a></h4>
+            </div>
+          </div>
+          <!--End Icon Box -->
+
+        </div>
+      </div>
+    </div>
+<!--end 3boxes-->
+
+  </section>
+<!-- End Hero Section -->
+
+  <main id="main">
+
+    <!-- - - - - - - - -  Frequently Asked Questions Section - - - - - - - -  -->
+    <section id="faq" class="faq">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-12">
+            <div class="content text-center">
+              <h3>Frequently Asked <strong>Questions</strong></h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-12">
+
+            <div class="accordion accordion-flush" id="faqlist" data-aos="fade-up" data-aos-delay="100">
+
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-1">
+                    <span class="num"><i class="bi bi-1-square"></i></span>
+                    What is CoRide?
+                  </button>
+                </h3>
+                <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                  <div class="accordion-body">
+                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+                  </div>
+                </div>
+              </div><!-- # Faq item-->
+
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-3">
+                    <span class="num"><i class="bi bi-3-square"></i></span>
+                    Est-ce que votre service de covoiturage est sécurisé ?
+                  </button>
+                </h3>
+                <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                  <div class="accordion-body">
+                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+                  </div>
+                </div>
+              </div><!-- # Faq item-->
+
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-4">
+                    <span class="num"><i class="bi bi-4-square"></i></span>
+                    Comment rechercher un covoiturage ?
+                  </button>
+                </h3>
+                <div id="faq-content-4" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                  <div class="accordion-body">
+                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+                  </div>
+                </div>
+              </div><!-- # Faq item-->
+
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-2">
+                    <span class="num"><i class="bi bi-2-square"></i></span>
+                    Dois-je m’inscrire ?
+                  </button>
+                </h3>
+                <div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                  <div class="accordion-body">
+                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+                  </div>
+                </div>
+              </div><!-- # Faq item-->
+
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Frequently Asked Questions Section -->
+
+    <!-- - - - - - - - -  Call To Action Section - - - - - - - -  -->
+    <section id="call-to-action" class="call-to-action">
+      <div class="container text-center" data-aos="zoom-out">
+        <h3>SignIn to start something great?</h3>
+        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+        <a class="cta-btn" href="mailto:info@example.com">Join Us</a>
+      </div>
+    </section><!-- End Call To Action Section -->
+
+    <!-- - - - - - - - -  Testimonials Section - - - - - - - -  -->
+    <section id="testimonials" class="testimonials">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>FeedBack</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+        </div>
+
+        <div class="slides-3 swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <div class="d-flex align-items-center info-box">
+                    <img src="assets/images/testimonials/testimonial-1.jpg" class="testimonial-img flex-shrink-0" alt="">
+                    <div>
+                      <h3>Jhone Doe</h3>
+                      <h4>CFO</h4>
+                      <div class="stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p>
+                    <i class="bi bi-quote quote-icon-left"></i>
+                    Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam.
+                    <i class="bi bi-quote quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <div class="d-flex align-items-center info-box">
+                    <img src="assets/images/testimonials/testimonial-2.jpg" class="testimonial-img flex-shrink-0" alt="">
+                    <div>
+                      <h3>Afa Rose</h3>
+                      <h4>Web Designer</h4>
+                      <div class="stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p>
+                    <i class="bi bi-quote quote-icon-left"></i>
+                    Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet.
+                    <i class="bi bi-quote quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <div class="d-flex align-items-center info-box">
+                    <img src="assets/images/testimonials/testimonial-3.jpg" class="testimonial-img flex-shrink-0" alt="">
+                    <div>
+                      <h3>Keena Lara</h3>
+                      <h4>Store Owner</h4>
+                      <div class="stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p>
+                    <i class="bi bi-quote quote-icon-left"></i>
+                    Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis minim.
+                    <i class="bi bi-quote quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <div class="d-flex align-items-center info-box">
+                    <img src="assets/images/testimonials/testimonial-4.jpg" class="testimonial-img flex-shrink-0" alt="">
+                    <div>
+                      <h3>Fizzi Brandon</h3>
+                      <h4>Freelancer</h4>
+                      <div class="stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p>
+                    <i class="bi bi-quote quote-icon-left"></i>
+                    Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit dolore.
+                    <i class="bi bi-quote quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section><!-- End Testimonials Section -->
+
+    <!-- - - - - - - - -  Recent Blog Posts Section - - - - - - - -  -->
+    <section id="recent-posts" class="recent-posts sections-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>Recent Posts</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+        </div>
+
+        <div class="row gy-4">
+
+          <div class="col-xl-4 col-md-6">
+            <article>
+
+              <div class="post-img">
+                <img src="assets/images/blog/blog-1.jpg" alt="" class="img-fluid">
+              </div>
+
+              <p class="post-category">Domain & Hosting</p>
+
+              <h2 class="title">
+                <a href="blog-details.html">How to host website on any hosting provider?</a>
+              </h2>
+
+              <div class="d-flex align-items-center">
+                <div class="post-meta">
+                  <p class="post-author">William Bla</p>
+                  <p class="post-date">
+                    <time datetime="2022-01-01">Feb 1, 2022</time>
+                  </p>
+                </div>
+              </div>
+
+            </article>
+          </div><!-- End post list item -->
+
+          <div class="col-xl-4 col-md-6">
+            <article>
+
+              <div class="post-img">
+                <img src="assets/images/blog/blog-2.jpg" alt="" class="img-fluid">
+              </div>
+
+              <p class="post-category">Advertisement</p>
+
+              <h2 class="title">
+                <a href="blog-details.html">How to create add on google adwords?</a>
+              </h2>
+
+              <div class="d-flex align-items-center">
+                <div class="post-meta">
+                  <p class="post-author">Jobi Ret</p>
+                  <p class="post-date">
+                    <time datetime="2022-01-01">Oct 5, 2022</time>
+                  </p>
+                </div>
+              </div>
+
+            </article>
+          </div><!-- End post list item -->
+
+          <div class="col-xl-4 col-md-6">
+            <article>
+
+              <div class="post-img">
+                <img src="assets/images/blog/blog-3.jpg" alt="" class="img-fluid">
+              </div>
+
+              <p class="post-category">Marketing</p>
+
+              <h2 class="title">
+                <a href="blog-details.html">What is digital marketing and why is important?</a>
+              </h2>
+
+              <div class="d-flex align-items-center">
+                <div class="post-meta">
+                  <p class="post-author">Main Dow</p>
+                  <p class="post-date">
+                    <time datetime="2022-01-01">Dec 22, 2022</time>
+                  </p>
+                </div>
+              </div>
+
+            </article>
+          </div><!-- End post list item -->
+
+        </div><!-- End recent posts list -->
+
+      </div>
+    </section><!-- End Recent Blog Posts Section -->
+
+  </main><!-- End #main -->
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader"></div>
+
+
+{% endblock %}
+
+
+

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Postes{% endblock %}
+{% block title %}PostesController{% endblock %}
 
 
 {% block body %}
@@ -38,15 +38,11 @@
           <td>{{ i.getTypepost }}</td>
           <td>
             <div class="d-flex justify-content-between align-items-center">
-          <div class="btn-group">
-            <a href="{{path('app_edit_poste', {'id': i.id})}}">
-              <button type="submit" class="btn btn-primary">Modifier</button>
-            </a>
-            <a href="{{path('app_delete_poste', {'id': i.id})}}" onclick="return confirm('Êtes-vous sûr de bien vouloir supprimer cet Poste?')">
-              <button type="submit" class="btn btn-primary" style="margin-left: 10px;">Supprimer</button>
-            </a>
-          </div>
-        </div>
+              <div class="btn-group">
+                <a href="{{ path('app_edit_poste', {'id': i.id}) }}" class="btn btn-sm btn-outline-secondary">Modifier</a>
+                <a href="{{ path('app_delete_poste', {'id': i.id}) }}" class="btn btn-sm btn-outline-secondary" onclick="return confirm('Attention ceci va supprimer le poste')">Supprimer</a>
+              </div>
+            </div>
           </td>
         </tr>
       {% endfor %}
@@ -55,6 +51,4 @@
 {% else %}
   <p>Aucun poste trouvé</p>
 {% endif %}
-<br/><br/><br/><br/><br/>
-
 {% endblock %}

@@ -1,19 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modifier{% endblock %}
+{% block title %}EditPosteController{% endblock %}
 
 {% block body %}
-<br/><br/><br/><br/><br/>
 
-    <h1>Modifier Poste</h1>
+    <h1>Editer Poste</h1>
 
     {{form_start(form)}}
 
     {{include('layouts/_posteForm.html.twig')}}
 
-    <button class="btn btn-outline-primary">Modifier poste</button>
+    <button class="btn btn-outline-primary">Editer poste</button>
 
     {{form_end(form)}}
-    <br/><br/><br/><br/><br/>
-
+ 
 {% endblock %}
