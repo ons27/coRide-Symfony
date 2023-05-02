@@ -27,7 +27,6 @@ class Reclamation
 
   
 
-    
 
     #[ORM\Column(nullable: true)]
     private ?int $id_user = null;
