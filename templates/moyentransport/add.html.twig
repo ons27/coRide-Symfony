@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add Moyentransport{% endblock %}
+
+{% block body %}
+<br/><br/><br/><br/><br/>
+
+    <h1>Publier Moyentransport</h1>
+
+    {{form_start(form)}}
+
+    {{include('layouts/_moyentransportForm.html.twig')}}
+
+    <button class="btn btn-outline-primary">Ajouter moyentransport</button>
+
+    {{form_end(form)}}
+    <br/><br/><br/><br/><br/>
+
+{% endblock %}

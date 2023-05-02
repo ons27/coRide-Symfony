@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Moyentransport index{% endblock %}
+
+{% block body %}
+<br/><br/><br/><br/><br/>
+
+    <h1>Moyentransport index</h1>
+    {% for key, messages in app.session.flashbag.all() %}
+        {% for message in messages %}
+            <div class="alert alert-{{ key }}" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+    <table class="table">
+        <thead>
+            <tr>
+               
+                 {# <th><a href="{{ path('app_moyentransport_index') }}?orderBy=id_moy&direction={{ direction == 'asc' and orderBy == 'id_moy' ? 'desc' : 'asc' }}">Id_moy</a></th> #}
+<th><a href="{{ path('app_moyentransport') }}?orderBy=type&direction={{ direction == 'asc' and orderBy == 'type' ? 'desc' : 'asc' }}">Type</a></th>
+<th><a href="{{ path('app_moyentransport') }}?orderBy=nb_place&direction={{ direction == 'asc' and orderBy == 'nb_place' ? 'desc' : 'asc' }}">Nb_place</a></th>
+<th><a href="{{ path('app_moyentransport') }}?orderBy=marque&direction={{ direction == 'asc' and orderBy == 'marque' ? 'desc' : 'asc' }}">Marque</a></th>
+<th><a href="{{ path('app_moyentransport') }}?orderBy=matricule&direction={{ direction == 'asc' and orderBy == 'matricule' ? 'desc' : 'asc' }}">Matricule</a></th>
+
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for moyentransport in moyentransports %}
+            <tr>
+                 <td>{{ moyentransport.id_moy }}</td> 
+                <td>{{ moyentransport.type }}</td>
+                <td>{{ moyentransport.nbPlace }}</td>
+                <td>{{ moyentransport.marque }}</td>
+                <td>{{ moyentransport.matricule }}</td>
+                <td>
+                    <a href="{{ path('app_moyentransport_edit', {'id': moyentransport.id_moy}) }}">edit</a>
+                    <a href="{{ path('app_delete_moyentransport', {'id': moyentransport.id_moy}) }}">DELETE</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_add_moyentransport') }}">Create new</a>
+    <br/><br/><br/><br/><br/>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EditMoyentansportController{% endblock %}
+
+{% block body %}
+<br/><br/><br/><br/><br/>
+
+    <h1>Editer Moyentansport</h1>
+
+    {{form_start(form)}}
+
+    {{include('layouts/_moyentransportForm.html.twig')}}
+
+    <button class="btn btn-outline-primary">Editer moyentansport</button>
+
+    {{form_end(form)}}
+    <br/><br/><br/><br/><br/>
+
+{% endblock %}

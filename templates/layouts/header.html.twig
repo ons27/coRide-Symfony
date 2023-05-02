@@ -33,7 +33,21 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
-        <h1><a href="{{path('app_home')}}"><span><img src="assets/img/coride_logo.png" alt="" class="img-fluid"></span></a></h1>
+      
+<style>
+    /* Move the logo to the left by 20 pixels */
+    .img-fluid {
+        margin-left: 50px;
+    }
+</style>
+
+<h1>
+    <a href="{{path('app_home')}}">
+        <span>
+            <img src="assets/img/coride_logo.png" alt="" class="img-fluid">
+        </span>
+    </a>
+</h1>
         <!--<a href="index.html"><img src="assets/img/coride_logo.png" alt="" class="img-fluid"></a>-->
       </div>
 
@@ -51,13 +65,13 @@
           <li ><a class="nav-link scrollto " href="{{path('app_home')}}#faq"><span>Q.F.P</span> </a>
           </li>
          
-          <li class="dropdown"><a href="{{path('app_postes')}}"><span>Postes</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="{{path('app_postes')}}"><span>Poste</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="{{path('app_add_poste')}}">Ajouter</a></li>
               <li><a href="{{path('app_postes')}}">Historique</a></li>
             </ul>
           </li>
-          <li class="dropdown"><a href="{{path('app_trajet')}}"><span>Trajets</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="{{path('app_trajet')}}"><span>Trajet</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="{{path('app_add_trajet')}}">Ajouter</a></li>
               <li><a href="{{path('app_trajet')}}">Historique</a></li>
@@ -67,6 +81,13 @@
             <ul>
               <li><a href="{{path('app_reclamation_new')}}">Ajouter</a></li>
               <li><a href="{{path('app_reclamation_index')}}">Historique</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="{{path('app_moyentransport')}}"><span>Transport</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="{{path('app_add_moyentransport')}}">AJOUTER</a></li>
+              <li><a href="{{path('app_moyentransport')}}">HISTORIQUE</a></li>
+
             </ul>
           </li>
            <li ><a class="nav-link scrollto " href="{{path('app_home')}}#contact"><span>CONTACTER</span> </a>

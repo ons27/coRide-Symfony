@@ -38,6 +38,7 @@ class Poste
         value: 0,
         message: "Le prix doit etre superieur a : {{ compared_value }}"
     )]
+   
     private ?float $prix = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]

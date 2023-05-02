@@ -7,6 +7,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+
+
 #[ORM\Entity(repositoryClass: ReclamationRepository::class)]
 class Reclamation
 {
@@ -31,10 +33,13 @@ class Reclamation
     private ?int $id_user = null;
 
     #[ORM\ManyToOne(inversedBy: 'typeRec')]
-    private ?TypeReclamation $typeReclamation = null;
+    private ?TypeReclamation $typeReclamations = null;
 
     
-
+    public function __construct()
+    {
+        $this->typeReclamations = new ArrayCollection();
+    }
    
 
     
