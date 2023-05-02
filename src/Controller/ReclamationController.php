@@ -13,9 +13,13 @@ use App\Repository\TypeReclamationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 class ReclamationController extends AbstractController
 {
@@ -45,7 +49,7 @@ class ReclamationController extends AbstractController
     }
 
     #[Route('/reclamation/new', name: 'app_reclamation_new', methods: ['GET', 'POST'])]
-    public function add(Request $request): Response
+    public function add(Request $request, MailerInterface $mailer): Response
     {
         $reclamation = new Reclamation();
         $form = $this->createForm(ReclamationType::class, $reclamation);
@@ -55,7 +59,20 @@ class ReclamationController extends AbstractController
             $em = $this->getDoctrine()->getManager();
         $em->persist($reclamation);
         $em->flush();
+ // Envoi de l'e-mail
+ $email = (new Email())
+ ->from('bouhjarons27@gmail.com')
+ ->to('bouhjarons27@gmail.com')
+ ->subject('Nouvelle réclamation')
+ ->html('<p>Une nouvelle réclamation a été soumise:</p>' .
+ '<ul>' .
+ '<li>Type de reclamation: ' . $reclamation->getTypeReclamation() . '</li>' .
+ '<li>Sujet: ' . $reclamation->getSujet() . '</li>' .
+ '<li>Reclamation: ' . $reclamation->getTextRec() . '</li>' .
+ '</ul>');
 
+
+$mailer->send($email);
             return $this->redirectToRoute('app_reclamation_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -104,4 +121,75 @@ class ReclamationController extends AbstractController
 
         return $this->redirectToRoute('app_reclamation_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
+
+
+  
+
+    #[Route('/reclamation/pdf/{id}', name: 'app_rec_pdf')]
+    public function PDFreponse($id, ReclamationRepository $repo)
+    {
+        $reclamation = $repo->find($id);
+        $reclamations = [$reclamation];
+    
+        // Configure Dompdf according to your needs
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
+    
+        // Instantiate Dompdf with our options
+        $dompdf = new Dompdf($pdfOptions);
+    
+        // Retrieve the HTML generated in our twig file
+        $dompdf->loadHtml($this->renderView('reclamation/pdf.html.twig', [
+            'reclamation' => $reclamations
+        ]));
+    
+        // Load HTML to Dompdf
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+    
+        // Set the response content
+        $response = new Response();
+        $response->headers->set('Content-Type', 'application/pdf');
+        $response->setContent($dompdf->output());
+    
+        // Return the response
+        return $response;
+    }
+    
+
+
+    
+    #[Route('/pdffff', name: 'pdf_all_recs')]
+    public function pdfAllReponses(ReclamationRepository $repo): Response
+    {
+        // Récupérer toutes les reclamations depuis la base de données
+        $reclamations = $repo->findAll();
+    
+        // Configurer Dompdf selon vos besoins
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
+    
+        $dompdf = new Dompdf($pdfOptions);
+    
+        // Charger le contenu HTML des reclamations dans Dompdf
+        $dompdf->loadHtml($this->renderView('reclamation/pdf.html.twig', ['reclamation' => $reclamations]));
+    
+        // Définir le format de la page
+        $dompdf->setPaper('A4', 'portrait');
+    
+        // Générer le PDF
+        $dompdf->render();
+    
+        // Renvoyer la reclamation avec le contenu PDF en pièce jointe
+        $response = new Response($dompdf->output(), 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'attachment; filename="Toutes_les_reclamations.pdf"',
+        ]);
+    
+        return $response;
+    }
+    
+
 }

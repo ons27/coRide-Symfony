@@ -1,0 +1,46 @@
+{% block title %}  {% endblock %}
+
+{% block body %}
+
+
+
+<style>
+    /* Les descendants de rang impair sont stylés avec une couleur     */
+    tbody:nth-child(odd)  { background-color : #8d8a8a;}
+    /* Les descendants de rang pair sont stylés avec une autre couleur */
+    tbody:nth-child(even) { background-color : #F7EDE2; }
+    th { background-color : #534666; padding:1.2em; }
+    td { padding:0.6em; }
+    logo {
+        width: 1cm;
+        height :1cm;
+    }
+</style>
+
+<table class="table" align="center">
+    <thead>
+    <tr>
+    <th style="color:#ffffff">Depart</th>
+     <th style="color:#ffffff">Destination</th>
+          <th style="color:#ffffff">Type de Trajet</th>
+
+     
+
+        
+       
+      
+    </tr>
+    </thead>
+    <tbody>
+        {% for trajet in trajet %}
+        <tr>
+            <td>{{ trajet.depart }}</td>
+            <td>{{ trajet.destination }}</td>
+            <td>{{ trajet.typeTrajet }}</td>
+        </tr>
+    {% endfor %}
+        </tbody>
+</table>
+    {% endblock %}
+
+

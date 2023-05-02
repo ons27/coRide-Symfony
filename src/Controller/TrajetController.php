@@ -24,7 +24,8 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 
-
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,7 +33,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class TrajetController extends AbstractController
 {
-#[Route('/trajet/pdf', name: 'trajet.pdf')]
+/*#[Route('/trajet/pdf', name: 'trajet.pdf')]
 public function pdf(Trajet $trajet = null, PdfService $pdf, TrajetRepository $trajetRepository): Response
 {
     $trajets = $trajetRepository->findAll();
@@ -40,7 +41,36 @@ public function pdf(Trajet $trajet = null, PdfService $pdf, TrajetRepository $tr
     $html = $this->render('trajet/pdf/index.html.twig', ['trajets' => $trajets]);
     $pdf->showPdfFile($html); 
 }
-
+*/
+#[Route('/trajet/pdf', name: 'trajet.pdf')]
+    public function pdfAllReponses(TrajetRepository $trajetRepository): Response
+    {
+        // Récupérer toutes les reclamations depuis la base de données
+        $trajet = $trajetRepository->findAll();
+    
+        // Configurer Dompdf selon vos besoins
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
+    
+        $dompdf = new Dompdf($pdfOptions);
+    
+        // Charger le contenu HTML des reclamations dans Dompdf
+        $dompdf->loadHtml($this->renderView('trajet/pdf/pdf.html.twig', ['trajet' => $trajet]));
+    
+        // Définir le format de la page
+        $dompdf->setPaper('A4', 'portrait');
+    
+        // Générer le PDF
+        $dompdf->render();
+    
+        // Renvoyer la reclamation avec le contenu PDF en pièce jointe
+        $response = new Response($dompdf->output(), 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'attachment; filename="Trajet.pdf"',
+        ]);
+    
+        return $response;
+    }
 
     #[Route('/trajet', name: 'app_trajet')]
     public function index(TrajetRepository $TrajetRepository, TypeTrajetRepository $TypeTrajetRepository, Request $request): Response

@@ -1,0 +1,49 @@
+{% block title %}  {% endblock %}
+
+{% block body %}
+
+
+
+<style>
+    /* Les descendants de rang impair sont stylés avec une couleur     */
+    tbody:nth-child(odd)  { background-color : #8d8a8a;}
+    /* Les descendants de rang pair sont stylés avec une autre couleur */
+    tbody:nth-child(even) { background-color : #6e9ff5; }
+    th { background-color : #273781; padding:1.2em; }
+    td { padding:0.6em; }
+    logo {
+        width: 1cm;
+        height :1cm;
+    }
+</style>
+
+<table class="table" align="center">
+    <thead>
+    <tr>
+    <th style="color:#ffffff">sujet</th>
+     <th style="color:#ffffff">text</th>
+          <th style="color:#ffffff">type de reclamation</th>
+
+     
+
+        
+       
+      
+    </tr>
+    </thead>
+    <tbody>
+        {% for r in reclamation %}
+            <tr>
+                 <td>{{r.id}}</td>
+                 <td>{{r.sujet}}</td>
+                 <td>{{r.textRec}}</td>
+          
+              
+               
+            </tr>
+        {% endfor %}
+        </tbody>
+</table>
+    {% endblock %}
+
+
